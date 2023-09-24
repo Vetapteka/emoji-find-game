@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Container } from './components/Container';
 import { Provider } from 'react-redux';
 import { setupStore } from './store/store';
 import { PageContext, Pages, TPageContext } from './pages/PageContext';
@@ -15,15 +14,14 @@ function App() {
 	return (
 		<Provider store={store}>
 			<PageContext.Provider value={[page, setPage]}>
-				<Container>
-					<button onClick={() => setPage(Pages.START_PAGE)}>start</button>
-					<button onClick={() => setPage(Pages.MENU_PAGE)}>menu</button>
-					<button onClick={() => setPage(Pages.GAME_PAGE)}>game</button>
+				<button style={{position: 'absolute', top: '0', left: '0'}} onClick={() => setPage(Pages.START_PAGE)}>start</button>
+				<button style={{position: 'absolute', top: '70px', left: '0'}} onClick={() => setPage(Pages.MENU_PAGE)}>menu</button>
+				<button style={{position: 'absolute', top: '100px', left: '0'}} onClick={() => setPage(Pages.GAME_PAGE)}>game</button>
 
 					{page === Pages.START_PAGE && <StartPage/>}
 					{page === Pages.MENU_PAGE && <MenuPage/>}
 					{page === Pages.GAME_PAGE && <GamePage/>}
-				</Container>
+
 			</PageContext.Provider>
 		</Provider>
 	);
