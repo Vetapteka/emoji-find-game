@@ -1,13 +1,13 @@
-import React from 'react';
+import useInitSimpleEmoji from '../../hooks/InitSimpleEmoji';
+import Keyboard from './keyboard/Keyboard';
+import { useAppSelector } from '../../hooks/redux';
 
-export interface IGamePageProps {
-
-}
-
-function GamePage(props: IGamePageProps): JSX.Element {
-	return (
-		<div></div>
-	);
-}
+function GamePage(): JSX.Element {
+	useInitSimpleEmoji();
+	const { emojiList, isLoading } = useAppSelector(state => state.simpleEmojiReducer);
+	return <div>
+		{isLoading ? 'loading...' : <Keyboard emojiList={emojiList}/>}
+	</div>;
+};
 
 export default GamePage;
