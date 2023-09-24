@@ -1,34 +1,29 @@
 import React, { useState } from 'react';
-import { EmojiListKeys, TEmojiList } from '../../../store/simple-emoji/simpleEmoji.model';
+import { EmojiListKeys } from '../../../store/simple-emoji/simpleEmoji.model';
 import styled from 'styled-components';
 import { emojiCategories } from '../../../data/emoji';
 import { TStateSetter } from '../../../types';
 // @ts-ignore
 import keyboard_container from '../../../assets/containers/keyboard.svg';
-import { Switcher, IconPaths, Switches } from './Switcher';
 import { Keys } from './Keys';
+import Switches from './switcher/Switcher';
+import { useAppSelector } from '../../../hooks/redux';
+import { ISimpleEmojiState } from '../../../store/simple-emoji/simpleEmoji.sllice';
 
 const Wrapper = styled.div`
-  height: 40vh;
+  height: 100%;
   background: no-repeat center/contain url(${keyboard_container});
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 `;
 
-export interface IKeyboardProps {
-	emojiList: TEmojiList;
-}
-
-function Keyboard({ emojiList }: IKeyboardProps) {
+function Keyboard(): JSX.Element {
+	const { emojiList }: ISimpleEmojiState = useAppSelector(state => state.simpleEmojiReducer);
 	const [panel, setPanel]: [EmojiListKeys, TStateSetter<EmojiListKeys>] = useState<EmojiListKeys>('yellowList');
 	return (
 		<Wrapper>
-			<Switches>
-				{Object.keys(emojiCategories).map((list: string) =>
-					<Switcher icon_path={IconPaths[list as EmojiListKeys]}
-							  onClick={() => setPanel(list as EmojiListKeys)}/>
-				)}
-			</Switches>
+			<Switches setPanel={setPanel}/>
 			<Keys>
 				{emojiCategories[panel].map((code: string) =>
 					<img
@@ -37,10 +32,9 @@ function Keyboard({ emojiList }: IKeyboardProps) {
 						src={`data:image/svg+xml;utf8,${encodeURIComponent(emojiList[code])}`}
 					/>
 				)}
-			</Keys>;
+			</Keys>
 		</Wrapper>
-	)
-		;
+	);
 }
 
 export default Keyboard;
