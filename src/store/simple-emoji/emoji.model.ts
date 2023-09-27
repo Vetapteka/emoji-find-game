@@ -1,4 +1,4 @@
-export interface ISimpleEmojiListModel {
+export interface IEmojiListModel {
 	yellowList: string[];
 	symbolsList: string[];
 	eatList: string[];
@@ -7,9 +7,9 @@ export interface ISimpleEmojiListModel {
 	thingsList: string[];
 }
 
-export type EmojiListKeys = keyof ISimpleEmojiListModel;
+export type EmojiListKeys = keyof IEmojiListModel;
 
-export interface ISimpleEmojiModel {
+export interface IEmojiModel {
 	code: string;
 	svg: string;
 }

@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getSimpleEmoji } from './simpleEmoji.actions';
-import { ISimpleEmojiModel, TEmojiList } from './simpleEmoji.model';
+import { getSimpleEmoji } from './emoji.actions';
+import { IEmojiModel, TEmojiList } from './emoji.model';
 
-export interface ISimpleEmojiState {
+export interface IEmojiState {
 	isEmpty: boolean,
 	emojiList: TEmojiList,
 	isLoading: boolean,
 	error: string
 }
 
-const initialState: ISimpleEmojiState = {
+const initialState: IEmojiState = {
 	isEmpty: true,
 	isLoading: false,
 	error: '',
@@ -18,12 +18,12 @@ const initialState: ISimpleEmojiState = {
 
 let emojiCount = 0;
 
-export const simpleEmojiSlice = createSlice({
-	name: 'simpleEmoji',
+export const emojiSlice = createSlice({
+	name: 'emoji',
 	initialState,
 	reducers: {},
 	extraReducers: {
-		[getSimpleEmoji.fulfilled.type]: (state, action: PayloadAction<ISimpleEmojiModel>): void => {
+		[getSimpleEmoji.fulfilled.type]: (state, action: PayloadAction<IEmojiModel>): void => {
 			const { code, svg } = action.payload;
 			state.error = '';
 			state.emojiList[code] = svg;
@@ -41,4 +41,4 @@ export const simpleEmojiSlice = createSlice({
 	}
 });
 
-export default simpleEmojiSlice.reducer;
+export default emojiSlice.reducer;
