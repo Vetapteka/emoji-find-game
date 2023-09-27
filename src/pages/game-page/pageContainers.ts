@@ -7,6 +7,10 @@ export const HeaderContainer = styled.div`
 
 export const ContentContainer = styled.div`
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 `;
 
 export const KeyboardContainer = styled.div`

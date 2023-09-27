@@ -20,7 +20,7 @@ export const initIconColorsState: IIconColors = {
 	SMILE_ICON : ICON_ACTIVE_COLOR
 };
 
-export type TPageContext = [IIconColors, TStateSetter<IIconColors>];
+export type TIconColorsContext = [IIconColors, TStateSetter<IIconColors>];
 
-export const IconColorsContext: Context<TPageContext> = createContext<TPageContext>([initIconColorsState, () => {
+export const IconColorsContext: Context<TIconColorsContext> = createContext<TIconColorsContext>([initIconColorsState, () => {
 }]);

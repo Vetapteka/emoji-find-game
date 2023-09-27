@@ -7,7 +7,7 @@ export enum Pages {
 	MENU_PAGE = 'MenuPage'
 }
 
-export type TPageContext = [Pages, TStateSetter<Pages>];
+export type TOpenedPageContext = [Pages, TStateSetter<Pages>];
 
-export const PageContext: Context<TPageContext> = createContext<TPageContext>([Pages.START_PAGE, () => {
+export const OpenedPageContext: Context<TOpenedPageContext> = createContext<TOpenedPageContext>([Pages.START_PAGE, () => {
 }]);

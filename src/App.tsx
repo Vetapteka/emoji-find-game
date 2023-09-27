@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 import { setupStore } from './store/store';
-import { PageContext, Pages, TPageContext } from './pages/PageContext';
+import { OpenedPageContext, Pages, TOpenedPageContext } from './pages/OpenedPageContext';
 import StartPage from './pages/start-page/StartPage';
 import MenuPage from './pages/menu-page/MenuPage';
 import GamePage from './pages/game-page/GamePage';

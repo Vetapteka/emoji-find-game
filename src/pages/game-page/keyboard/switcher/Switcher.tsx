@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import SmileIcon from './icons/SmileIcon';
-import { EmojiListKeys } from '../../../../store/simple-emoji/simpleEmoji.model';
+import { EmojiListKeys } from '../../../../store/simple-emoji/emoji.model';
 import HeartIcon from './icons/HeartIcon';
 import BantIcon from './icons/BantIcon';
 import AvocadoIcon from './icons/AvocadoIcon';
@@ -61,7 +61,6 @@ function Switches({ setPanel }: SwitchesProps) {
 		</Wrapper>
 
 	);
-
 }
 
 export default Switches;
