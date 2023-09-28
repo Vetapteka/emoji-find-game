@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import simpleEmojiReducer from './simple-emoji/emoji.sllice';
+import emojiReducer from './emoji/emoji.sllice';
 import emojiMapperReducer from './emoji-mapper/emojiMapper.slice';
+import timeReducer from './timer/timer.slice';
 
 export const rootReducer = combineReducers({
-	simpleEmojiReducer,
-	emojiMapperReducer
+	emojiReducer,
+	emojiMapperReducer,
+	timeReducer
 });
 
 
