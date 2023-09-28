@@ -10,7 +10,7 @@ function useInitSimpleEmoji(): void {
 
 	useEffect((): void => {
 		if (isEmpty) {
-			Object.values(emojiCategories).forEach(list => {
+			Object.values(emojiCategories).forEach((list: string[]): void => {
 				list.forEach((code: string) => dispatch(getSimpleEmoji(code)));
 			});
 		}
