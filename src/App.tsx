@@ -1,35 +1,17 @@
-import React, { useState } from 'react';
-import { Provider } from 'react-redux';
-import { setupStore } from './store/store';
-import { OpenedPageContext, Pages, TOpenedPageContext } from './pages/OpenedPageContext';
-import StartPage from './pages/start-page/StartPage';
-import MenuPage from './pages/menu-page/MenuPage';
-import GamePage from './pages/game-page/GamePage';
+import React, { JSX, Suspense } from 'react';
+import { useAppSelector } from './hooks/redux';
+import { IPagesState, PagesEnum } from './store/pages/pages.model';
 
-const store = setupStore();
+const StartPage = React.lazy(() => import('./pages/start-page/StartPage'));
+const GamePage = React.lazy(() => import('./pages/game-page/GamePage'));
 
-function App() {
-	const [page, setPage]: TOpenedPageContext = useState<Pages>(Pages.START_PAGE);
-
+function App(): JSX.Element {
+	const { openedPage, openedModal }: IPagesState = useAppSelector(state => state.pagesReducer);
 	return (
-		<Provider store={store}>
-			<OpenedPageContext.Provider value={[page, setPage]}>
-				<button style={{ position: 'absolute', top: '0', left: '0' }}
-						onClick={() => setPage(Pages.START_PAGE)}>start
-				</button>
-				<button style={{ position: 'absolute', top: '70px', left: '0' }}
-						onClick={() => setPage(Pages.MENU_PAGE)}>menu
-				</button>
-				<button style={{ position: 'absolute', top: '100px', left: '0' }}
-						onClick={() => setPage(Pages.GAME_PAGE)}>game
-				</button>
-
-				{page === Pages.START_PAGE && <StartPage/>}
-				{page === Pages.MENU_PAGE && <MenuPage/>}
-				{page === Pages.GAME_PAGE && <GamePage/>}
-
-			</OpenedPageContext.Provider>
-		</Provider>
+		<>
+			{openedPage === PagesEnum.START_PAGE && <Suspense fallback={'loading.....'}><StartPage/></Suspense>}
+			{openedPage === PagesEnum.GAME_PAGE && <Suspense fallback={'loading.....'}><GamePage/></Suspense>}
+		</>
 	);
 }
 
