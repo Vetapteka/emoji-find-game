@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getSimpleEmoji } from './emoji.actions';
 import { IEmojiModel, TEmojiList } from './emoji.model';
+import { allEmoji } from '../../data/emojiCodes';
 
 export interface IEmojiState {
 	isEmpty: boolean,
@@ -11,7 +12,7 @@ export interface IEmojiState {
 
 const initialState: IEmojiState = {
 	isEmpty: true,
-	isLoading: false,
+	isLoading: true,
 	error: '',
 	emojiList: {}
 };
@@ -28,7 +29,8 @@ export const emojiSlice = createSlice({
 			state.error = '';
 			state.emojiList[code] = svg;
 			emojiCount++;
-			state.isLoading = emojiCount <= 600;
+			if (emojiCount >= allEmoji.length)
+				state.isLoading = false;
 			state.isEmpty = false;
 		},
 		[getSimpleEmoji.pending.type]: (state): void => {

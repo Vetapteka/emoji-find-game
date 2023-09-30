@@ -3,11 +3,10 @@ export interface IEmojiListModel {
 	symbolsList: string[];
 	eatList: string[];
 	greenList: string[];
-	sportList: string[];
 	thingsList: string[];
 }
 
-export type EmojiListKeys = keyof IEmojiListModel;
+export type TEmojiListKeys = keyof IEmojiListModel;
 
 export interface IEmojiModel {
 	code: string;
