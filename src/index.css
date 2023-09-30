@@ -1,3 +1,18 @@
+@font-face {
+	font-family: PenFont;
+	src: url("./assets/PenFont.otf");
+}
+
+@font-face {
+	font-family: PenFontBold;
+	src: url("./assets/PenFontBold.otf");
+}
+
+span {
+	font-family: PenFont, 'Comic Sans MS', cursive;
+	color: #71A7FC;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -9,4 +24,39 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	background: no-repeat center/cover url("./assets/background.svg");
+
+	stroke: #71A7FC;
+	stroke-linecap: round;
+	stroke-width: 0.4vh;
+
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body path {
+	vector-effect: non-scaling-stroke;
+}
+
+body,
+body * {
+	cursor: url("./assets/cursor/pointer.svg"), pointer
+}
+
+body *:active {
+	cursor: url("./assets/cursor/click.svg"), pointer
+}
+
+.font-xs {
+	font-size: 3vh;
+}
+
+.font-s {
+	font-size: 5vh;
+}
+
+.font-m {
+	font-size: 10vh;
+}
+
+.font-l {
+	font-size: 15vh;
 }
