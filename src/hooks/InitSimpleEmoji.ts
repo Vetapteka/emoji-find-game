@@ -1,21 +1,20 @@
 import { useEffect } from 'react';
-import { getSimpleEmoji } from '../store/simple-emoji/emoji.actions';
+import { getSimpleEmoji } from '../store/emoji/emoji.actions';
 import { useAppDispatch, useAppSelector } from './redux';
-import { IEmojiState } from '../store/simple-emoji/emoji.sllice';
-import { emojiCategories } from '../data/emojiCodes';
+import { IEmojiState } from '../store/emoji/emoji.sllice';
+import { emojiCodes } from '../data/emojiCodes';
 
 function useInitSimpleEmoji(): void {
 	const dispatch = useAppDispatch();
-	const { isEmpty }: IEmojiState = useAppSelector(state => state.simpleEmojiReducer);
+	const { isEmpty }: IEmojiState = useAppSelector(state => state.emojiReducer);
 
 	useEffect((): void => {
 		if (isEmpty) {
-			Object.values(emojiCategories).forEach((list: string[]): void => {
+			Object.values(emojiCodes).forEach((list: string[]): void => {
 				list.forEach((code: string) => dispatch(getSimpleEmoji(code)));
 			});
 		}
 	}, []);
-
 }
 
 export default useInitSimpleEmoji;
