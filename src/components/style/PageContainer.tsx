@@ -7,3 +7,7 @@ export const PageContainer = styled.div`
   padding: 2vmin;
   box-sizing: border-box;
 `
+
+export const PageContent = styled.div`
+  flex-grow: 1;
+`
