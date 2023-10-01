@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { AppDispatch } from '../store/store';
 import { openPage } from '../store/pages/pages.slice';
 import { NavigationContainer } from '../components/style/NavigationContainer';
+import DigitProvider from '../components/digits/DigitProvider';
 
 const Wrapper = styled(PageContainer)`
   display: flex;
@@ -35,7 +36,7 @@ function StartPage(): JSX.Element {
 			</NavigationContainer>
 			<Content>
 				<Icon icon={'CROWN_ICON'} size={IconSizeEnum.L}/>
-				<span>{bestScore}</span>
+				<DigitProvider n={bestScore} isBold={false} size={IconSizeEnum.XL}/>
 				<Icon icon={'PLAY_ICON'} size={IconSizeEnum.XL} onClick={openGamePageHandler}/>
 			</Content>
 			<NavigationContainer>

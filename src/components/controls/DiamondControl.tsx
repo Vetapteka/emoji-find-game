@@ -4,9 +4,11 @@ import Icon, { IconSizeEnum } from '../icons/Icon';
 import styled from 'styled-components';
 import { IUserState } from '../../store/user/user.model';
 import { RootState } from '../../store/store';
+import DigitProvider from '../digits/DigitProvider';
 
 const Wrapper = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 interface DiamondProps {
@@ -18,7 +20,7 @@ function DiamondControl({ size }: DiamondProps) {
 	return (
 		<Wrapper>
 			<Icon icon="DIAMOND_ICON" size={size}/>
-			<span className={'font-s'} style={{ float: 'right' }}>{diamondCount}</span>
+			<DigitProvider style={{ marginLeft: '1vh' }} size={size} n={diamondCount} isBold={false}/>
 		</Wrapper>
 	);
 }
