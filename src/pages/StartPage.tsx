@@ -3,11 +3,11 @@ import { PageContainer, PageContent } from '../components/style/PageContainer';
 import styled from 'styled-components';
 import Icon, { IconSizeEnum } from '../components/icons/Icon';
 import DiamondControl from '../components/controls/DiamondControl';
-import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { useAppDispatch } from '../hooks/redux';
 import { AppDispatch } from '../store/store';
 import { openPage } from '../store/pages/pages.slice';
 import { NavigationContainer } from '../components/style/NavigationContainer';
-import DigitProvider from '../components/digits/DigitProvider';
+import BestScoreControl from '../components/controls/BestScoreControl';
 
 const Wrapper = styled(PageContainer)`
   display: flex;
@@ -18,13 +18,11 @@ const Content = styled(PageContent)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 `;
 
 function StartPage(): JSX.Element {
-	const { bestScore } = useAppSelector(state => state.userReducer);
 	const dispatch: AppDispatch = useAppDispatch();
-
 	const openGamePageHandler = () => dispatch(openPage('GAME_PAGE'));
 	const openThemesPageHandler = () => dispatch(openPage('THEMES_PAGE'));
 
@@ -35,8 +33,7 @@ function StartPage(): JSX.Element {
 				<Icon icon={'SETTINGS_ICON'} size={IconSizeEnum.S}/>
 			</NavigationContainer>
 			<Content>
-				<Icon icon={'CROWN_ICON'} size={IconSizeEnum.L}/>
-				<DigitProvider n={bestScore} isBold={false} size={IconSizeEnum.XL}/>
+				<BestScoreControl/>
 				<Icon icon={'PLAY_ICON'} size={IconSizeEnum.XL} onClick={openGamePageHandler}/>
 			</Content>
 			<NavigationContainer>
