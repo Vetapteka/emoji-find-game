@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/emoji-find-game/static/css/main.cea3d409.css",
+    "main.js": "/emoji-find-game/static/js/main.81d542b7.js",
+    "static/js/739.92ad4b76.chunk.js": "/emoji-find-game/static/js/739.92ad4b76.chunk.js",
+    "static/js/448.3aca2310.chunk.js": "/emoji-find-game/static/js/448.3aca2310.chunk.js",
+    "static/js/207.38fd880d.chunk.js": "/emoji-find-game/static/js/207.38fd880d.chunk.js",
+    "static/media/background.svg": "/emoji-find-game/static/media/background.2937820c2fe20060ce89.svg",
+    "static/media/PenFontBold.otf": "/emoji-find-game/static/media/PenFontBold.058c097199b54bb8863c.otf",
+    "static/media/PenFont.otf": "/emoji-find-game/static/media/PenFont.08f5077e037d91cc9a6f.otf",
+    "static/media/click.svg": "/emoji-find-game/static/media/click.696d178ccb14ba4c8c10.svg",
+    "static/media/pointer.svg": "/emoji-find-game/static/media/pointer.c517599b7dd2d005691f.svg",
+    "index.html": "/emoji-find-game/index.html",
+    "main.cea3d409.css.map": "/emoji-find-game/static/css/main.cea3d409.css.map",
+    "main.81d542b7.js.map": "/emoji-find-game/static/js/main.81d542b7.js.map",
+    "739.92ad4b76.chunk.js.map": "/emoji-find-game/static/js/739.92ad4b76.chunk.js.map",
+    "448.3aca2310.chunk.js.map": "/emoji-find-game/static/js/448.3aca2310.chunk.js.map",
+    "207.38fd880d.chunk.js.map": "/emoji-find-game/static/js/207.38fd880d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cea3d409.css",
+    "static/js/main.81d542b7.js"
+  ]
+}
