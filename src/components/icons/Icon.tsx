@@ -16,6 +16,8 @@ import BallIcon from './BallIcon';
 import HeartIcon from './HeartIcon';
 import QuestionIcon from './QuestionIcon';
 import PlusIcon from './PlusIcon';
+import UpdateIcon from './UpdateIcon';
+import ReplayIcon from './ReplayIcon';
 
 export enum IconSizeEnum {
 	XL = '23vh',
@@ -46,6 +48,7 @@ export type TIcon =
 	| 'SMILE_ICON'
 	| 'THEME_ICON'
 	| 'TIME_ICON'
+	| 'UPDATE_ICON'
 
 interface WrapperProps {
 	size: string;
@@ -65,22 +68,24 @@ interface IconProps {
 function Icon({ size, icon, onClick, ...props }: IconProps) {
 	return (
 		<Wrapper {...props} onClick={onClick} size={size}>
-			{icon === 'BACK_ICON' && <BallIcon />}
-			{icon === 'CROWN_ICON' && <CrownIcon />}
-			{icon === 'DIAMOND_ICON' && <DiamondIcon />}
-			{icon === 'HEART_ICON' && <HeartIcon />}
-			{icon === 'HOME_ICON' && <HomeIcon />}
-			{icon === 'LEADERBOARD_ICON' && <LeaderBoardIcon />}
-			{icon === 'LIKE_ICON' && <LikeIcon />}
-			{icon === 'MORE_GAMES_ICON' && <MoreGamesIcon />}
-			{icon === 'PLAY_ICON' && <PlayIcon />}
-			{icon === 'PLUS_ICON' && <PlusIcon />}
-			{icon === 'QUESTION_ICON' && <QuestionIcon />}
-			{icon === 'PAUSE_ICON' && <PauseIcon />}
-			{icon === 'SETTINGS_ICON' && <SettingsIcon />}
-			{icon === 'SMILE_ICON' && <SmileIcon />}
-			{icon === 'THEME_ICON' && <ThemeIcon />}
-			{icon === 'TIME_ICON' && <TimeIcon />}
+			{icon === 'BACK_ICON' && <BallIcon/>}
+			{icon === 'CROWN_ICON' && <CrownIcon/>}
+			{icon === 'DIAMOND_ICON' && <DiamondIcon/>}
+			{icon === 'HEART_ICON' && <HeartIcon/>}
+			{icon === 'HOME_ICON' && <HomeIcon/>}
+			{icon === 'LEADERBOARD_ICON' && <LeaderBoardIcon/>}
+			{icon === 'LIKE_ICON' && <LikeIcon/>}
+			{icon === 'MORE_GAMES_ICON' && <MoreGamesIcon/>}
+			{icon === 'PAUSE_ICON' && <PauseIcon/>}
+			{icon === 'PLAY_ICON' && <PlayIcon/>}
+			{icon === 'PLUS_ICON' && <PlusIcon/>}
+			{icon === 'QUESTION_ICON' && <QuestionIcon/>}
+			{icon === 'REPLAY_ICON' && <ReplayIcon/>}
+			{icon === 'SETTINGS_ICON' && <SettingsIcon/>}
+			{icon === 'SMILE_ICON' && <SmileIcon/>}
+			{icon === 'THEME_ICON' && <ThemeIcon/>}
+			{icon === 'TIME_ICON' && <TimeIcon/>}
+			{icon === 'UPDATE_ICON' && <UpdateIcon/>}
 		</Wrapper>
 	);
 }
