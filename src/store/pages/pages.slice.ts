@@ -13,6 +13,7 @@ export const pagesSlice = createSlice({
 	initialState,
 	reducers: {
 		openPage: (state, action: PayloadAction<TPages>): void => {
+			state.openedModal = 'UNKNOWN';
 			state.previousPage = state.openedPage;
 			state.openedPage = action.payload;
 		},

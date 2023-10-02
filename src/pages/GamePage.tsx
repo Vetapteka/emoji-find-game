@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import { JSX, useEffect } from 'react';
 import styled from 'styled-components';
 import { PageContainer, PageContent } from '../components/style/PageContainer';
 import { NavigationContainer } from '../components/style/NavigationContainer';
@@ -9,10 +9,20 @@ import Keyboard from '../components/keyboard/Keyboard';
 import TargetEmojiControl from '../components/controls/TargetEmojiControl';
 import MergeEmojiControl from '../components/controls/MergeEmojiControl';
 import SelectedEmojiPanel from '../components/SelectedEmojiPanel';
+import DiamondControl from '../components/controls/DiamondControl';
+import WinCountControl from '../components/controls/WinCountControl';
+import { KEYBOARD_HEIGHT } from '../constants';
+import KeyboardBorder from '../components/borders/KeyboardBorder';
 
 const Wrapper = styled(PageContainer)`
   display: flex;
   flex-direction: column;
+  position: relative;
+`;
+
+const CountContainer = styled.div`
+  position: absolute;
+  top: calc(${IconSizeEnum.S} + 4vmin);
 `;
 
 const Content = styled(PageContent)`
@@ -30,15 +40,20 @@ function GamePage(): JSX.Element {
 				<TimeControl/>
 				<PauseControl/>
 			</NavigationContainer>
+			<CountContainer>
+				<WinCountControl/>
+				<DiamondControl size={IconSizeEnum.XS}/>
+			</CountContainer>
 			<Content>
 				<TargetEmojiControl/>
 				<MergeEmojiControl/>
 				<SelectedEmojiPanel/>
 			</Content>
-			<Keyboard/>
+			<KeyboardBorder height={KEYBOARD_HEIGHT}>
+				<Keyboard/>
+			</KeyboardBorder>
 		</Wrapper>
-
 	);
-};
+}
 
 export default GamePage;
