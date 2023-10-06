@@ -26,9 +26,9 @@ type TEmojiListToIcon = {
 const EmojiListToIcon: TEmojiListToIcon = {
 	yellowList: 'SMILE_ICON',
 	symbolsList: 'HEART_ICON',
-	eatList: 'SMILE_ICON',
-	greenList: 'SMILE_ICON',
-	thingsList: 'SMILE_ICON',
+	eatList: 'CAKE_ICON',
+	greenList: 'GREEN_ICON',
+	thingsList: 'BALL_ICON',
 };
 
 function Keyboard(): JSX.Element {

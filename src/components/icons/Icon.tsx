@@ -18,6 +18,9 @@ import QuestionIcon from './QuestionIcon';
 import PlusIcon from './PlusIcon';
 import UpdateIcon from './UpdateIcon';
 import ReplayIcon from './ReplayIcon';
+import CakeIcon from './CakeIcon';
+import GreenIcon from './GreenIcon';
+import BackIcon from './BackIcon';
 
 export enum IconSizeEnum {
 	XL = '23vh',
@@ -32,7 +35,9 @@ export type TIcon =
 	| 'BALL_ICON'
 	| 'CHECK_MARK_ICON'
 	| 'CROWN_ICON'
+	| 'CAKE_ICON'
 	| 'DIAMOND_ICON'
+	| 'GREEN_ICON'
 	| 'HEART_ICON'
 	| 'HOME_ICON'
 	| 'LEADERBOARD_ICON'
@@ -68,9 +73,12 @@ interface IconProps {
 function Icon({ size, icon, onClick, ...props }: IconProps) {
 	return (
 		<Wrapper {...props} onClick={onClick} size={size}>
-			{icon === 'BACK_ICON' && <BallIcon/>}
+			{icon === 'BACK_ICON' && <BackIcon/>}
+			{icon === 'BALL_ICON' && <BallIcon/>}
 			{icon === 'CROWN_ICON' && <CrownIcon/>}
+			{icon === 'CAKE_ICON' && <CakeIcon/>}
 			{icon === 'DIAMOND_ICON' && <DiamondIcon/>}
+			{icon === 'GREEN_ICON' && <GreenIcon/>}
 			{icon === 'HEART_ICON' && <HeartIcon/>}
 			{icon === 'HOME_ICON' && <HomeIcon/>}
 			{icon === 'LEADERBOARD_ICON' && <LeaderBoardIcon/>}
