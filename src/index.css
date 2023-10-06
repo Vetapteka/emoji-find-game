@@ -1,18 +1,3 @@
-@font-face {
-	font-family: PenFont;
-	src: url("./assets/PenFont.otf");
-}
-
-@font-face {
-	font-family: PenFontBold;
-	src: url("./assets/PenFontBold.otf");
-}
-
-span {
-	font-family: PenFont, 'Comic Sans MS', cursive;
-	color: #71A7FC;
-}
-
 body {
 	margin: 0;
 	padding: 0;
@@ -45,20 +30,24 @@ body *:active {
 	cursor: url("./assets/cursor/click.svg"), pointer
 }
 
-.font-xs {
-	font-size: 3vh;
+
+::-webkit-scrollbar-thumb {
+	background-image: url("./assets/scroll.svg");
+	background-size: cover;
+	border-radius: 5px;
 }
 
-.font-s {
-	font-size: 5vh;
+::-webkit-scrollbar {
+	width: 1.5vh;
 }
 
-.font-m {
-	font-size: 10vh;
+
+::-webkit-scrollbar-corner {
+	background-color: #fff;
 }
 
-.font-l {
-	font-size: 15vh;
+::-webkit-scrollbar-button {
+	background-color: #3498db; /* Цвет кнопок */
 }
 
 .u-1fa84 {
