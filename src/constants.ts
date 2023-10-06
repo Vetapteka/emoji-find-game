@@ -1,4 +1,4 @@
-export const KEYBOARD_HEIGHT = '35vh';
+export const KEYBOARD_HEIGHT = '45vh';
 
 export const ACTIVE_ICON_COLOR = 'white';
 

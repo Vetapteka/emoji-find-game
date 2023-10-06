@@ -29,10 +29,11 @@ const Wrapper = styled.div<WrapperProps>`
     height: 100%;
   }
 
-  & > img {
+  & > img,
+  & > div {
     width: 80%;
     height: 80%;
-    padding: 10%;
+    margin: 10%;
   }
 `;
 

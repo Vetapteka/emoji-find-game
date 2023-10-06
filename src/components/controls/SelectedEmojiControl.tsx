@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { IEmojiState } from '../../store/emoji/emoji.sllice';
 import { AppDispatch, RootState } from '../../store/store';
 import { activateEmojiContainer, IEmojiMapperState } from '../../store/emoji-mapper/emojiMapper.slice';
 import PenBorder from '../borders/PenBorder';
@@ -13,7 +12,6 @@ export interface SelectedEmojiContainerProps {
 }
 
 function SelectedEmojiControl({ type, selectedEmoji }: SelectedEmojiContainerProps) {
-	const { emojiList }: IEmojiState = useAppSelector((state: RootState) => state.emojiReducer);
 	const { activeEmojiContainer }: IEmojiMapperState = useAppSelector((state: RootState) => state.emojiMapperReducer);
 	const dispatch: AppDispatch = useAppDispatch();
 
@@ -23,11 +21,7 @@ function SelectedEmojiControl({ type, selectedEmoji }: SelectedEmojiContainerPro
 
 	return (
 		<PenBorder size={SELECTED_EMOJI_CONTAINER_SIZE} onClick={clickHandler} isActive={type === activeEmojiContainer}>
-			{selectedEmoji ? <img
-				loading="eager"
-				alt={selectedEmoji}
-				src={`data:image/svg+xml;utf8,${encodeURIComponent(emojiList[selectedEmoji])}`}
-			/> : null}
+			{selectedEmoji ? <div className={`u-${selectedEmoji}`}></div> : null}
 		</PenBorder>);
 }
 

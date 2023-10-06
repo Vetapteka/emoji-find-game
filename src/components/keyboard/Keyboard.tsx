@@ -8,17 +8,18 @@ import { TEmojiListKeys } from '../../store/emoji/emoji.model';
 import { emojiCodes } from '../../data/emojiCodes';
 import { setSelectedEmoji } from '../../store/emoji-mapper/emojiMapper.slice';
 import { TStateSetter } from '../../types';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { AppDispatch, RootState } from '../../store/store';
-import { IEmojiState } from '../../store/emoji/emoji.sllice';
+import { useAppDispatch } from '../../hooks/redux';
+import { AppDispatch } from '../../store/store';
 
 const Keys = styled.div`
   & > * {
-    width: calc(0.17 * ${KEYBOARD_HEIGHT});
-    height: calc(0.17 * ${KEYBOARD_HEIGHT});
-    padding: 0.3%;
+    width: calc(${KEYBOARD_HEIGHT} / 6.6);
+    height: calc(${KEYBOARD_HEIGHT} / 6.6);
+    margin: 0.3%;
+	display: inline-block;
   }
 `;
+
 type TEmojiListToIcon = {
 	[key in TEmojiListKeys]: TIcon;
 };
@@ -33,8 +34,8 @@ const EmojiListToIcon: TEmojiListToIcon = {
 
 function Keyboard(): JSX.Element {
 	const [emojiListName, setEmojiListName]: [TEmojiListKeys, TStateSetter<TEmojiListKeys>] = useState<TEmojiListKeys>('yellowList');
-	const { emojiList }: IEmojiState = useAppSelector((state: RootState) => state.emojiReducer);
 	const dispatch: AppDispatch = useAppDispatch();
+
 	return (
 		<KeyboardBorder height={KEYBOARD_HEIGHT}>
 			<>
@@ -43,18 +44,13 @@ function Keyboard(): JSX.Element {
 						<EmojiKeyboardSwitcher
 							isActive={emojiListName === listName}
 							onClick={() => setEmojiListName(listName as TEmojiListKeys)}>
-							<Icon icon={EmojiListToIcon[listName as TEmojiListKeys]} size={IconSizeEnum.XS}/>
+							<Icon icon={EmojiListToIcon[listName as TEmojiListKeys]} size={IconSizeEnum.S}/>
 						</EmojiKeyboardSwitcher>)
 					}
 				</div>
 				<Keys className="keys">
 					{emojiCodes[emojiListName].map((code: string) =>
-						<img
-							onClick={() => dispatch(setSelectedEmoji(code))}
-							loading="eager"
-							alt={code}
-							src={`data:image/svg+xml;utf8,${encodeURIComponent(emojiList[code])}`}
-						/>
+						<div className={`u-${code}`} onClick={() => dispatch(setSelectedEmoji(code))}></div>
 					)}
 				</Keys>
 			</>

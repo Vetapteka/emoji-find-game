@@ -2,7 +2,6 @@ import React, { JSX, Suspense } from 'react';
 import { useAppSelector } from './hooks/redux';
 import { IPagesState } from './store/pages/pages.model';
 import PauseModal from './modals/PauseModal';
-import useInitSimpleEmoji from './hooks/InitSimpleEmoji';
 import { RootState } from './store/store';
 
 const StartPage = React.lazy(() => import('./pages/StartPage'));
@@ -10,7 +9,7 @@ const GamePage = React.lazy(() => import('./pages/GamePage'));
 
 function App(): JSX.Element {
 	const { openedPage, openedModal }: IPagesState = useAppSelector((state: RootState) => state.pagesReducer);
-	useInitSimpleEmoji();
+
 	return (
 		<>
 			{openedPage === 'START_PAGE' && <Suspense fallback={'loading.....'}><StartPage/></Suspense>}
