@@ -8,6 +8,7 @@ export type TPages =
 export type TModals =
 	'SETTINGS_MODAL' |
 	'PAUSE_MODAL' |
+	'COUNTDOWN_MODAL' |
 	'UNKNOWN';
 
 export interface IPagesState {

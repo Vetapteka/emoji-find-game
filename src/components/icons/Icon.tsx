@@ -23,6 +23,7 @@ import GreenIcon from './GreenIcon';
 import BackIcon from './BackIcon';
 
 export enum IconSizeEnum {
+	XXL = '30vh',
 	XL = '23vh',
 	L = '15vh',
 	M = '10vh',

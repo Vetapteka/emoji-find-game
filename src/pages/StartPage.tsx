@@ -5,7 +5,7 @@ import Icon, { IconSizeEnum } from '../components/icons/Icon';
 import DiamondControl from '../components/controls/DiamondControl';
 import { useAppDispatch } from '../hooks/redux';
 import { AppDispatch } from '../store/store';
-import { openPage } from '../store/pages/pages.slice';
+import { openModal, openPage } from '../store/pages/pages.slice';
 import { NavigationContainer } from '../components/style/NavigationContainer';
 import BestScoreControl from '../components/controls/BestScoreControl';
 
@@ -23,7 +23,10 @@ const Content = styled(PageContent)`
 
 function StartPage(): JSX.Element {
 	const dispatch: AppDispatch = useAppDispatch();
-	const openGamePageHandler = () => dispatch(openPage('GAME_PAGE'));
+	const startGameHandler = (): void => {
+		dispatch(openPage('GAME_PAGE'));
+		dispatch(openModal('COUNTDOWN_MODAL'));
+	};
 	const openThemesPageHandler = () => dispatch(openPage('THEMES_PAGE'));
 
 	return (
@@ -34,7 +37,7 @@ function StartPage(): JSX.Element {
 			</NavigationContainer>
 			<Content>
 				<BestScoreControl/>
-				<Icon icon={'PLAY_ICON'} size={IconSizeEnum.XL} onClick={openGamePageHandler}/>
+				<Icon icon={'PLAY_ICON'} size={IconSizeEnum.XL} onClick={startGameHandler}/>
 			</Content>
 			<NavigationContainer>
 				<Icon icon={'MORE_GAMES_ICON'} size={IconSizeEnum.L}/>

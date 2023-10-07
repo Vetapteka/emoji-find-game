@@ -1,8 +1,12 @@
 import React, { JSX } from 'react';
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  width: min(80vw, 450px);
+interface WrapperProps{
+	size: string;
+}
+
+const Wrapper = styled.div<WrapperProps>`
+  width: ${({ size }) => size};
   position: relative;
 
   & > div {
@@ -11,18 +15,23 @@ const Wrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-	box-sizing: border-box;
+    box-sizing: border-box;
     padding: 2vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
 interface ModalBorderProps {
+	size: string;
 	children: JSX.Element;
 }
 
-function ModalBorder({ children }: ModalBorderProps): JSX.Element {
+function ModalBorder({ children, size }: ModalBorderProps): JSX.Element {
 	return (
-		<Wrapper>
+		<Wrapper size={size}>
 			{children}
 			<svg preserveAspectRatio="none" stroke="#A6C9FE" strokeWidth="0.14vh" viewBox="0 0 1358 1169" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path
