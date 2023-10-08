@@ -1,6 +1,6 @@
 import React, { JSX } from 'react';
 import styled from 'styled-components';
-import { ACTIVE_ICON_COLOR, DEFAULT_ICON_COLOR } from '../../constants';
+import { ACTIVE_ICON_COLOR } from '../../constants';
 
 interface WrapperProps {
 	$isActive: boolean;
@@ -17,7 +17,7 @@ const Wrapper = styled.div<WrapperProps>`
     padding: 0.3vh;
     box-sizing: border-box;
     z-index: 2;
-    stroke: ${({ $isActive }) => $isActive ? ACTIVE_ICON_COLOR : DEFAULT_ICON_COLOR}
+    ${({ $isActive }) => $isActive ? `stroke: ${ACTIVE_ICON_COLOR}` : ''}
   }
 
   & > svg {
