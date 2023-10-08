@@ -1,4 +1,7 @@
 import { createSlice, } from '@reduxjs/toolkit';
+import { GAME_DURATION } from '../../constants';
+import { store } from '../../index';
+import { openModal } from '../pages/pages.slice';
 
 export interface ITimerState {
 	isTimeOver: boolean;
@@ -7,19 +10,19 @@ export interface ITimerState {
 
 const initialState: ITimerState = {
 	isTimeOver: false,
-	isTimePause: false
+	isTimePause: true
 };
 
 let intervalId: NodeJS.Timeout | null = null;
 
-let TIME = 100
+let TIME = GAME_DURATION;
 
 export const timerSlice = createSlice({
 		name: 'timer',
 		initialState,
 		reducers: {
 			initTimer: (state): void => {
-				TIME = 100;
+				TIME = GAME_DURATION;
 			},
 			startTimer: (state): void => {
 				console.log('start time');
@@ -29,9 +32,10 @@ export const timerSlice = createSlice({
 				intervalId = setInterval(() => {
 					TIME -= 1;
 					console.log(TIME);
-					if (TIME <= 0) {
-						state.isTimeOver = true;
+					if (TIME < 0) {
 						intervalId && clearInterval(intervalId);
+						store.dispatch(setTimeOver());
+						store.dispatch(openModal('GAMEOVER_MODAL'))
 					}
 				}, 1000);
 
@@ -40,9 +44,14 @@ export const timerSlice = createSlice({
 				state.isTimePause = true;
 				intervalId && clearInterval(intervalId);
 			},
+			setTimeOver: (state): void => {
+				console.log('end');
+				state.isTimeOver = true;
+				state.isTimePause = true;
+			}
 		}
 	})
 ;
 
-export const { startTimer, stopTimer, initTimer } = timerSlice.actions;
+export const { startTimer, stopTimer, initTimer, setTimeOver } = timerSlice.actions;
 export default timerSlice.reducer;

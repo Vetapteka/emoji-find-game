@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { JSX } from 'react';
+import { TIME_DASH_WIDTH } from '../../constants';
 
 interface PenBorderProps {
 	isActive?: boolean;
@@ -34,6 +35,24 @@ const Wrapper = styled.div<WrapperProps>`
     width: 80%;
     height: 80%;
     margin: 10%;
+  }
+
+
+  & > .timeDashContainer {
+    width: 100%;
+    height: 100%;
+	box-sizing: border-box;
+	padding: 0 2%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    & > svg {
+      width: ${TIME_DASH_WIDTH};
+      height: 100%;
+      display: inline-block;
+    }
   }
 `;
 
