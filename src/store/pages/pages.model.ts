@@ -9,11 +9,11 @@ export type TModals =
 	'SETTINGS_MODAL' |
 	'PAUSE_MODAL' |
 	'COUNTDOWN_MODAL' |
+	'GAMEOVER_MODAL' |
 	'UNKNOWN';
 
 export interface IPagesState {
 	openedPage: TPages;
 	previousPage: TPages;
-	isPageBlur: boolean;
 	openedModal: TModals;
 }

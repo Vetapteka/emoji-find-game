@@ -5,7 +5,6 @@ const initialState: IPagesState = {
 	openedPage: 'START_PAGE',
 	previousPage: 'UNKNOWN',
 	openedModal: 'UNKNOWN',
-	isPageBlur: false,
 };
 
 export const pagesSlice = createSlice({
@@ -21,12 +20,12 @@ export const pagesSlice = createSlice({
 			state.openedPage = state.previousPage;
 		},
 		openModal: (state, action: PayloadAction<TModals>): void => {
+			console.log('open modal ', action.payload);
 			state.openedModal = action.payload;
-			state.isPageBlur = true;
 		},
 		closeModal: (state): void => {
+			console.log('close modal ');
 			state.openedModal = 'UNKNOWN';
-			state.isPageBlur = false;
 		},
 	}
 });
