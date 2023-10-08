@@ -1,9 +1,9 @@
 import React, { JSX } from 'react';
 import styled from 'styled-components';
-import { ACTIVE_ICON_COLOR } from '../../constants';
+import { ACTIVE_ICON_COLOR, DEFAULT_ICON_COLOR } from '../../constants';
 
 interface WrapperProps {
-	isActive: boolean;
+	$isActive: boolean;
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -17,7 +17,7 @@ const Wrapper = styled.div<WrapperProps>`
     padding: 0.3vh;
     box-sizing: border-box;
     z-index: 2;
-    stroke: ${({ isActive }) => isActive && ACTIVE_ICON_COLOR}
+    stroke: ${({ $isActive }) => $isActive ? ACTIVE_ICON_COLOR : DEFAULT_ICON_COLOR}
   }
 
   & > svg {
@@ -38,7 +38,7 @@ interface EmojiSwitcherProps {
 
 function EmojiKeyboardSwitcher({ children, isActive, ...props }: EmojiSwitcherProps): JSX.Element {
 	return (
-		<Wrapper isActive={isActive} {...props}>
+		<Wrapper $isActive={isActive} {...props}>
 			{children}
 			{isActive &&
 				<svg preserveAspectRatio="none" viewBox="0 0 542 198" fill="none" xmlns="http://www.w3.org/2000/svg">

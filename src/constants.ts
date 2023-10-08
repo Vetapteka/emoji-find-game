@@ -1,6 +1,7 @@
 export const KEYBOARD_HEIGHT = '45vh';
 
 export const ACTIVE_ICON_COLOR = 'white';
+export const DEFAULT_ICON_COLOR = '#71A7FC';
 
 export const SELECTED_EMOJI_CONTAINER_SIZE = '12vh';
 

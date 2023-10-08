@@ -10,6 +10,7 @@ import { setSelectedEmoji } from '../../store/emoji-mapper/emojiMapper.slice';
 import { TStateSetter } from '../../types';
 import { useAppDispatch } from '../../hooks/redux';
 import { AppDispatch } from '../../store/store';
+import { nanoid } from 'nanoid';
 
 const Keys = styled.div`
   & > * {
@@ -41,7 +42,7 @@ function Keyboard(): JSX.Element {
 			<>
 				<div className="switchers">
 					{Object.keys(emojiCodes).map((listName: string) =>
-						<EmojiKeyboardSwitcher
+						<EmojiKeyboardSwitcher key={nanoid()}
 							isActive={emojiListName === listName}
 							onClick={() => setEmojiListName(listName as TEmojiListKeys)}>
 							<Icon icon={EmojiListToIcon[listName as TEmojiListKeys]} size={IconSizeEnum.S}/>
@@ -50,7 +51,7 @@ function Keyboard(): JSX.Element {
 				</div>
 				<Keys className="keys">
 					{emojiCodes[emojiListName].map((code: string) =>
-						<div className={`u-${code}`} onClick={() => dispatch(setSelectedEmoji(code))}></div>
+						<div className={`u-${code}`} key={nanoid()} onClick={() => dispatch(setSelectedEmoji(code))}></div>
 					)}
 				</Keys>
 			</>
