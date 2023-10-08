@@ -3,7 +3,7 @@ import Icon, { IconSizeEnum } from '../icons/Icon';
 
 function ReplayControl(): JSX.Element {
 	return (
-		<Icon icon="REPLAY_ICON" size={IconSizeEnum.M}/>
+		<Icon icon="REPLAY_ICON" size={IconSizeEnum.S}/>
 	);
 }
 

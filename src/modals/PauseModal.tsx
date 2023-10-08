@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 const Footer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 `;
 

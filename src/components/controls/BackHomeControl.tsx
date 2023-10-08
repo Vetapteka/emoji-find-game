@@ -7,11 +7,11 @@ import { openPage } from '../../store/pages/pages.slice';
 
 function BackHomeControl(): JSX.Element {
 	const dispatch: AppDispatch = useAppDispatch();
-	const openStartPageHandler = () => dispatch(openPage('START_PAGE'));
+	const openStartPageHandler = (): void => {
+		dispatch(openPage('START_PAGE'));
+	};
 	return (
-
 		<Icon icon={'HOME_ICON'} size={IconSizeEnum.S} onClick={openStartPageHandler}/>
-
 	);
 }
 

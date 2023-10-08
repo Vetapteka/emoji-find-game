@@ -3,7 +3,7 @@ import ModalBorder from '../borders/ModalBorder';
 import { ModalBackgroundContainer } from './ModalBackgroundContainer';
 
 export enum ModalSizeEnum{
-	M = '48vh',
+	M = '40vh',
 	S = '30vh',
 }
 
