@@ -10,6 +10,7 @@ import BackHomeControl from '../components/controls/BackHomeControl';
 
 
 const Wrapper = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

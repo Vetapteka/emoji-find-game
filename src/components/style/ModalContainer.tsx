@@ -1,6 +1,17 @@
 import React, { JSX } from 'react';
-import ModalBorder from '../borders/ModalBorder';
 import { ModalBackgroundContainer } from './ModalBackgroundContainer';
+import styled from 'styled-components';
+
+interface WrapperProps{
+	size?: ModalSizeEnum;
+}
+
+const Wrapper = styled.div<WrapperProps>`
+  width: ${({ size }) => size};
+  height: ${({ size }) => `calc(${size} * 0.86)`};;
+  background: no-repeat center/contain url(${({ theme }) => require(`../../assets/modal-background/modal-background-${theme.prefix}.svg`)});
+  padding: 1.5vh;
+`
 
 export enum ModalSizeEnum{
 	M = '40vh',
@@ -15,9 +26,9 @@ interface ModalContainerProps {
 function ModalContainer({ children, size }: ModalContainerProps): JSX.Element {
 	return (
 		<ModalBackgroundContainer>
-			<ModalBorder size={size ?? ModalSizeEnum.M} >
+			<Wrapper size={size ?? ModalSizeEnum.M} >
 				{children}
-			</ModalBorder>
+			</Wrapper>
 		</ModalBackgroundContainer>
 	);
 }
