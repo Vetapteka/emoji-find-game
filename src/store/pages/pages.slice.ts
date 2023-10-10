@@ -5,6 +5,7 @@ const initialState: IPagesState = {
 	openedPage: 'START_PAGE',
 	previousPage: 'UNKNOWN',
 	openedModal: 'UNKNOWN',
+	previousModal: 'UNKNOWN',
 };
 
 export const pagesSlice = createSlice({
@@ -12,12 +13,16 @@ export const pagesSlice = createSlice({
 	initialState,
 	reducers: {
 		openPage: (state, action: PayloadAction<TPages>): void => {
-			state.openedModal = 'UNKNOWN';
+			console.log('open page', action.payload);
 			state.previousPage = state.openedPage;
 			state.openedPage = action.payload;
+			state.previousModal = state.openedModal;
+			state.openedModal = 'UNKNOWN';
 		},
 		openPreviousPage: (state): void => {
 			state.openedPage = state.previousPage;
+			state.openedModal = state.previousModal;
+			console.log(state.previousPage, state.openedModal, state.openedPage)
 		},
 		openModal: (state, action: PayloadAction<TModals>): void => {
 			console.log('open modal ', action.payload);
