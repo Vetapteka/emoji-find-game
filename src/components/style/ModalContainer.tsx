@@ -9,7 +9,7 @@ interface WrapperProps{
 const Wrapper = styled.div<WrapperProps>`
   width: ${({ size }) => size};
   height: ${({ size }) => `calc(${size} * 0.86)`};;
-  background: no-repeat center/contain url(${({ theme }) => require(`../../assets/modal-background/modal-background-${theme.prefix}.svg`)});
+  background: no-repeat center/contain url(${({ theme }) => require(`../../assets/themes/${theme.prefix}/modal-background.svg`)});
   padding: 1.5vh;
 `
 

@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IThemeState, THEMES } from './theme.model';
 
 const initialState: IThemeState = {
-	theme: THEMES[0]
+	currentTheme: THEMES[0],
+	availableThemes: THEMES,
 };
 
 export const themeSlice = createSlice({
@@ -10,7 +11,10 @@ export const themeSlice = createSlice({
 	initialState,
 	reducers: {
 		setTheme: (state, action: PayloadAction<number>): void => {
-			state.theme = THEMES[action.payload];
+			state.currentTheme = THEMES[action.payload];
+		},
+		buyTheme: (state, action: PayloadAction<number>): void => {
+			state.currentTheme = THEMES[action.payload];
 		}
 	}
 });

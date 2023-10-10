@@ -8,6 +8,7 @@ import { AppDispatch } from '../store/store';
 import { openModal, openPage } from '../store/pages/pages.slice';
 import { NavigationContainer } from '../components/style/NavigationContainer';
 import BestScoreControl from '../components/controls/BestScoreControl';
+import ThemesControl from '../components/controls/ThemesControl';
 
 const Wrapper = styled(PageContainer)`
   display: flex;
@@ -27,7 +28,7 @@ function StartPage(): JSX.Element {
 		dispatch(openPage('GAME_PAGE'));
 		dispatch(openModal('COUNTDOWN_MODAL'));
 	};
-	const openThemesPageHandler = () => dispatch(openPage('THEMES_PAGE'));
+
 
 	return (
 		<Wrapper>
@@ -42,7 +43,7 @@ function StartPage(): JSX.Element {
 			<NavigationContainer>
 				<Icon icon={'MORE_GAMES_ICON'} size={IconSizeEnum.L}/>
 				<Icon icon={'LEADERBOARD_ICON'} size={IconSizeEnum.L}/>
-				<Icon icon={'THEME_ICON'} size={IconSizeEnum.L} onClick={openThemesPageHandler}/>
+				<ThemesControl size={IconSizeEnum.L}/>
 				<Icon icon={'LIKE_ICON'} size={IconSizeEnum.L}/>
 			</NavigationContainer>
 		</Wrapper>
