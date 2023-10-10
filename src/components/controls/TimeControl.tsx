@@ -16,8 +16,15 @@ function TimeControl(): JSX.Element {
 	useEffect((): void => {
 		const timeDashesCount: number = GAME_DURATION - time;
 
+		console.log(timeDashes.length);
+
 		if (timeDashes.length >= timeDashesCount) {
 			setTimeDashes([]);
+		} else if (timeDashes.length < timeDashesCount - 1) {
+			const newTimeDash: JSX.Element[] = Array.from({ length: timeDashesCount }, () => (
+				<TimeDash key={nanoid()}/>
+			));
+			setTimeDashes(newTimeDash);
 		} else {
 			const newTimeDash: JSX.Element = <TimeDash key={nanoid()}/>;
 			setTimeDashes((prevDivs: JSX.Element[]) => [...prevDivs, newTimeDash]);
