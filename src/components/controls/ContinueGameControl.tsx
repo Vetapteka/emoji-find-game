@@ -5,14 +5,21 @@ import { useAppDispatch } from '../../hooks/redux';
 import { openPage } from '../../store/pages/pages.slice';
 import { startTimer } from '../../store/timer/timer.slice';
 
-function ContinueGameControl(): JSX.Element {
+
+interface ContinueGameControlProps {
+	size?: IconSizeEnum;
+	isBackIcon?: boolean;
+}
+
+function ContinueGameControl({ isBackIcon, size }: ContinueGameControlProps): JSX.Element {
 	const dispatch: AppDispatch = useAppDispatch();
-	const openGamePageHandler = () => {
+	const openGamePageHandler = (): void => {
 		dispatch(startTimer());
 		dispatch(openPage('GAME_PAGE'));
 	};
 	return (
-		<Icon icon="PLAY_ICON" size={IconSizeEnum.L} onClick={openGamePageHandler}/>
+		<Icon icon={isBackIcon ? 'BACK_ICON' : 'PLAY_ICON'} size={size ?? IconSizeEnum.L}
+			  onClick={openGamePageHandler}/>
 	);
 }
 
