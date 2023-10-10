@@ -1,4 +1,4 @@
-import { IEmojiListModel } from '../store/emoji/emoji.model';
+import { IEmojiListModel } from '../store/emoji-mapper/emojiMapper.model';
 
 const yellowList: string[] = [
 	'1fa84', // 🪄

@@ -4,7 +4,7 @@ import KeyboardBorder from '../borders/KeyboardBorder';
 import EmojiKeyboardSwitcher from './EmojiKeyboardSwitcher';
 import Icon, { IconSizeEnum, TIcon } from '../icons/Icon';
 import { KEYBOARD_HEIGHT } from '../../constants';
-import { TEmojiListKeys } from '../../store/emoji/emoji.model';
+import { TEmojiListKeys } from '../../store/emoji-mapper/emojiMapper.model';
 import { emojiCodes } from '../../data/emojiCodes';
 import { setSelectedEmoji } from '../../store/emoji-mapper/emojiMapper.slice';
 import { TStateSetter } from '../../types';

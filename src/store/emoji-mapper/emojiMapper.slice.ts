@@ -6,7 +6,7 @@ import {
 	getRandomCombo,
 	googleRequestUrl,
 	IMergeEmojiCombo
-} from '../emoji/emojiUtils';
+} from './emojiUtils';
 
 export interface IEmojiMapperState {
 	activeEmojiContainer: SelectedEmojiContainersEnum;

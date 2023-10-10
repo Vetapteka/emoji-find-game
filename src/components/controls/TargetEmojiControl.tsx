@@ -1,6 +1,6 @@
 import React, { JSX } from 'react';
 import { TARGET_EMOJI_CONTAINER_SIZE } from '../../constants';
-import { googleRequestUrl } from '../../store/emoji/emojiUtils';
+import { googleRequestUrl } from '../../store/emoji-mapper/emojiUtils';
 import PenBorder from '../borders/PenBorder';
 import { useAppSelector } from '../../hooks/redux';
 import { RootState } from '../../store/store';

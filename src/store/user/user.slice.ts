@@ -10,7 +10,7 @@ const initialState: IUserState = {
 export const userSlice = createSlice({
 	name: 'user',
 	initialState,
-	reducers: {}
+	reducers: {},
 });
 
 export default userSlice.reducer;

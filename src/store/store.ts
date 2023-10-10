@@ -1,5 +1,4 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import emojiReducer from './emoji/emoji.sllice';
 import emojiMapperReducer from './emoji-mapper/emojiMapper.slice';
 import timeReducer from './timer/timer.slice';
 import pagesReducer from './pages/pages.slice';
@@ -7,7 +6,6 @@ import userReducer from './user/user.slice';
 import themeReducer from './theme/theme.slice';
 
 export const rootReducer = combineReducers({
-	emojiReducer,
 	emojiMapperReducer,
 	timeReducer,
 	pagesReducer,
