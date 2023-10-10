@@ -1,11 +1,6 @@
-import React from 'react';
-import { useAppSelector } from '../../hooks/redux';
-import Icon, { IconSizeEnum } from '../icons/Icon';
 import styled from 'styled-components';
-import { IUserState } from '../../store/user/user.model';
-import { RootState } from '../../store/store';
 import DigitProvider from '../digits/DigitProvider';
-import { IEmojiMapperState } from '../../store/emoji-mapper/emojiMapper.slice';
+import Icon, { IconSizeEnum } from '../icons/Icon';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,14 +9,14 @@ const Wrapper = styled.div`
 
 interface DiamondProps {
 	size: IconSizeEnum;
+	count: number;
 }
 
-function DiamondControl({ size }: DiamondProps) {
-	const { diamondsCount }: IEmojiMapperState = useAppSelector((state: RootState) => state.emojiMapperReducer);
+function DiamondControl({ size, count }: DiamondProps) {
 	return (
 		<Wrapper>
 			<Icon icon="DIAMOND_ICON" size={size}/>
-			<DigitProvider style={{ marginLeft: '1vh' }} size={size} n={diamondsCount} isBold={false}/>
+			<DigitProvider style={{ marginLeft: '1vh' }} size={size} n={count} isBold={false}/>
 		</Wrapper>
 	);
 }

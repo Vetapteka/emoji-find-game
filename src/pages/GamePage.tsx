@@ -9,7 +9,7 @@ import Keyboard from '../components/keyboard/Keyboard';
 import TargetEmojiControl from '../components/controls/TargetEmojiControl';
 import MergeEmojiControl from '../components/controls/MergeEmojiControl';
 import SelectedEmojiPanel from '../components/SelectedEmojiPanel';
-import DiamondControl from '../components/controls/DiamondControl';
+import DiamondScoreControl from '../components/controls/DiamondScoreControl';
 import WinCountControl from '../components/controls/WinCountControl';
 import { KEYBOARD_HEIGHT } from '../constants';
 import KeyboardBorder from '../components/borders/KeyboardBorder';
@@ -42,7 +42,7 @@ function GamePage(): JSX.Element {
 			</NavigationContainer>
 			<CountContainer>
 				<WinCountControl/>
-				<DiamondControl size={IconSizeEnum.XS}/>
+				<DiamondScoreControl size={IconSizeEnum.XS}/>
 			</CountContainer>
 			<Content>
 				<TargetEmojiControl/>

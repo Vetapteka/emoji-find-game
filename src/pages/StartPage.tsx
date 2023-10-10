@@ -2,7 +2,7 @@ import React, { JSX } from 'react';
 import { PageContainer, PageContent } from '../components/style/PageContainer';
 import styled from 'styled-components';
 import Icon, { IconSizeEnum } from '../components/icons/Icon';
-import DiamondControl from '../components/controls/DiamondControl';
+import DiamondScoreControl from '../components/controls/DiamondScoreControl';
 import { NavigationContainer } from '../components/style/NavigationContainer';
 import BestScoreControl from '../components/controls/BestScoreControl';
 import ThemesControl from '../components/controls/ThemesControl';
@@ -26,7 +26,7 @@ function StartPage(): JSX.Element {
 	return (
 		<Wrapper>
 			<NavigationContainer>
-				<DiamondControl size={IconSizeEnum.S}/>
+				<DiamondScoreControl size={IconSizeEnum.S}/>
 				<Icon icon={'SETTINGS_ICON'} size={IconSizeEnum.S}/>
 			</NavigationContainer>
 			<Content>
