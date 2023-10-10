@@ -21,7 +21,7 @@ function SelectedEmojiControl({ type, selectedEmoji }: SelectedEmojiContainerPro
 
 	return (
 		<PenBorder size={SELECTED_EMOJI_CONTAINER_SIZE} onClick={clickHandler} isActive={type === activeEmojiContainer}>
-			{selectedEmoji ? <div className={`u-${selectedEmoji}`}></div> : null}
+			{selectedEmoji ? <div className={`u-${selectedEmoji} image`}></div> : null}
 		</PenBorder>);
 }
 

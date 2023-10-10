@@ -9,6 +9,7 @@ interface PenBorderProps {
 	size?: string;
 	width?: string;
 	height?: string;
+	style?: {};
 }
 
 interface WrapperProps {
@@ -31,7 +32,7 @@ const Wrapper = styled.div<WrapperProps>`
   }
 
   & > img,
-  & > div {
+  & > .image {
     width: 80%;
     height: 80%;
     margin: 10%;
@@ -57,9 +58,9 @@ const Wrapper = styled.div<WrapperProps>`
 `;
 
 
-function PenBorder({ isActive, onClick, children, size, height, width }: PenBorderProps) {
+function PenBorder({ isActive, onClick, children, size, height, width, style }: PenBorderProps) {
 	return (
-		<Wrapper onClick={onClick} size={size} height={height} width={width}>
+		<Wrapper onClick={onClick} size={size} height={height} width={width} style={style}>
 			<svg preserveAspectRatio="none" viewBox="0 0 411 392" fill="none" xmlns="http://www.w3.org/2000/svg"
 				 strokeDasharray={isActive ? '10 10' : 'none'}>
 				<path

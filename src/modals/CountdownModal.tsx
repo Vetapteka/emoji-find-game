@@ -32,7 +32,7 @@ function CountdownModal(): JSX.Element {
 
 	return (
 		<ModalBackgroundContainer>
-			<DigitProvider key={countdown} n={countdown} isBold={true} isAnimated={true} size={IconSizeEnum.XXL}/>
+			<DigitProvider isColorChanged={true} key={countdown} n={countdown} isBold={true} isAnimated={true} size={IconSizeEnum.XXL}/>
 		</ModalBackgroundContainer>
 	);
 }

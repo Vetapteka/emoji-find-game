@@ -5,6 +5,7 @@ import { AnimationContainer } from '../style/AnimationContainer';
 
 interface WrapperProps {
 	size: string;
+	$isColorChanged?: boolean;
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -13,6 +14,7 @@ const Wrapper = styled.div<WrapperProps>`
   & > svg {
     height: 100%;
     margin: 0 0.3vh;
+    ${({ theme, $isColorChanged }) => $isColorChanged && theme.prefix === 'dark' ? 'stroke: white' : ''};
   }
 `;
 
@@ -26,10 +28,11 @@ export interface DigitProviderProps {
 	size: IconSizeEnum;
 	style?: {};
 	isAnimated?: boolean;
+	isColorChanged?: boolean;
 }
 
 
-function DigitProvider({ n, isBold, isAnimated, ...props }: DigitProviderProps): JSX.Element {
+function DigitProvider({ n, isBold, isAnimated, isColorChanged, ...props }: DigitProviderProps): JSX.Element {
 	const digits: number[] = n.toString().split('').map(Number);
 
 	const digitComponents: JSX.Element[] = digits.map((digit, index) => {
@@ -39,8 +42,8 @@ function DigitProvider({ n, isBold, isAnimated, ...props }: DigitProviderProps):
 	});
 
 	return <>{isAnimated
-		? <AnimationContainer><Wrapper {...props} >{digitComponents}</Wrapper></AnimationContainer>
-		: <Wrapper {...props} >{digitComponents}</Wrapper>}</>;
+		? <AnimationContainer><Wrapper $isColorChanged={isColorChanged} {...props} >{digitComponents}</Wrapper></AnimationContainer>
+		: <Wrapper $isColorChanged={isColorChanged} {...props} >{digitComponents}</Wrapper>}</>;
 }
 
 export default DigitProvider;

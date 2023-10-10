@@ -8,7 +8,7 @@ function BackControl(): JSX.Element {
 	const dispatch: AppDispatch = useAppDispatch();
 	const openPreviousPageHandler = () => dispatch(openPreviousPage());
 	return (
-		<Icon icon="BACK_ICON" size={IconSizeEnum.S} onClick={openPreviousPageHandler}/>
+		<Icon icon="BACK_ICON" size={IconSizeEnum.M} onClick={openPreviousPageHandler}/>
 	);
 }
 
