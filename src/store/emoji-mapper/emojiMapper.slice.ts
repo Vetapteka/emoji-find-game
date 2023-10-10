@@ -76,7 +76,7 @@ export const emojiMapperSlice = createSlice({
 			startGame: (state): void => {
 				state.targetEmoji = getRandomCombo();
 			},
-			resetState: (state): void => {
+			initScore: (state): void => {
 				state.isItBestScore = false;
 				state.winCount = 0;
 				state.leftEmoji = '';
@@ -89,5 +89,5 @@ export const emojiMapperSlice = createSlice({
 	})
 ;
 
-export const { setSelectedEmoji, startGame, resetState, activateEmojiContainer } = emojiMapperSlice.actions;
+export const { setSelectedEmoji, startGame, initScore, activateEmojiContainer } = emojiMapperSlice.actions;
 export default emojiMapperSlice.reducer;

@@ -6,7 +6,7 @@ import { COUNTDOWN_TIME_VALUE } from '../constants';
 import { IconSizeEnum } from '../components/icons/Icon';
 import { closeModal } from '../store/pages/pages.slice';
 import DigitProvider from '../components/digits/DigitProvider';
-import { initTimer, startTimer } from '../store/timer/timer.slice';
+import { startTimer } from '../store/timer/timer.slice';
 import { ModalBackgroundContainer } from '../components/style/ModalBackgroundContainer';
 import { startGame } from '../store/emoji-mapper/emojiMapper.slice';
 
@@ -19,7 +19,6 @@ function StartGameModal(): JSX.Element {
 			if (countdown > 1) {
 				setCountdown(countdown - 1);
 			} else {
-				dispatch(initTimer());
 				dispatch(startTimer());
 				dispatch(startGame());
 				dispatch(closeModal());

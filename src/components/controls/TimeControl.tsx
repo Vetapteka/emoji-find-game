@@ -6,29 +6,24 @@ import { TStateSetter } from '../../types';
 import { useAppSelector } from '../../hooks/redux';
 import { RootState } from '../../store/store';
 import { ITimerState } from '../../store/timer/timer.slice';
-import { TIME_DASH_INTERVAL } from '../../constants';
 import { nanoid } from 'nanoid';
+import { GAME_DURATION } from '../../constants';
 
 function TimeControl(): JSX.Element {
-	const { isTimePause, isTimeOver }: ITimerState = useAppSelector((state: RootState) => state.timeReducer);
+	const { time }: ITimerState = useAppSelector((state: RootState) => state.timeReducer);
 	const [timeDashes, setTimeDashes]: [JSX.Element[], TStateSetter<JSX.Element[]>] = useState<JSX.Element[]>([]);
 
-	useEffect(() => {
-		const intervalId = setInterval((): void => {
-			if (!isTimePause) {
-				const newTimeDash: JSX.Element = <TimeDash key={nanoid()}/>;
-				setTimeDashes((prevDivs: JSX.Element[]) => [...prevDivs, newTimeDash]);
-			}
+	useEffect((): void => {
+		const timeDashesCount: number = GAME_DURATION - time;
 
-			if (isTimeOver) {
-				clearInterval(intervalId);
-			}
+		if (timeDashes.length >= timeDashesCount) {
+			setTimeDashes([]);
+		} else {
+			const newTimeDash: JSX.Element = <TimeDash key={nanoid()}/>;
+			setTimeDashes((prevDivs: JSX.Element[]) => [...prevDivs, newTimeDash]);
+		}
 
-		}, TIME_DASH_INTERVAL * 1000);
-
-
-		return () => clearInterval(intervalId);
-	}, [isTimePause]);
+	}, [time]);
 
 	return (
 		<PenBorder height={IconSizeEnum.XS} width={'100%'}>
