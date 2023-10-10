@@ -4,11 +4,12 @@ import DiamondControl from './DiamondControl';
 
 interface BuyForDiamondsControlProps {
 	price: number;
+	className?: string;
 }
 
-function BuyForDiamondsControl({ price }: BuyForDiamondsControlProps): JSX.Element {
+function BuyForDiamondsControl({ price, ...props }: BuyForDiamondsControlProps): JSX.Element {
 	return (
-		<DiamondControl size={IconSizeEnum.S} count={price}/>
+		<DiamondControl {...props} size={IconSizeEnum.S} count={price}/>
 	);
 }
 

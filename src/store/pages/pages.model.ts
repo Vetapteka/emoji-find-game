@@ -9,6 +9,7 @@ export type TModals =
 	'SETTINGS_MODAL' |
 	'PAUSE_MODAL' |
 	'COUNTDOWN_MODAL' |
+	'UPDATE_EMOJI_MODAL' |
 	'GAMEOVER_MODAL' |
 	'UNKNOWN';
 

@@ -12,9 +12,9 @@ interface DiamondProps {
 	count: number;
 }
 
-function DiamondControl({ size, count }: DiamondProps) {
+function DiamondControl({ size, count, ...props }: DiamondProps) {
 	return (
-		<Wrapper>
+		<Wrapper {...props}>
 			<Icon icon="DIAMOND_ICON" size={size}/>
 			<DigitProvider style={{ marginLeft: '1vh' }} size={size} n={count} isBold={false}/>
 		</Wrapper>

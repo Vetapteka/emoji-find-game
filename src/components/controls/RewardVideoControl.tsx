@@ -1,9 +1,9 @@
 import React from 'react';
 import Icon, { IconSizeEnum } from '../icons/Icon';
 
-function RewardVideoControl(): JSX.Element {
+function RewardVideoControl(props: any): JSX.Element {
 	return (
-		<Icon icon="REWARD_ICON" size={IconSizeEnum.M}/>
+		<Icon {...props} icon="REWARD_ICON" size={IconSizeEnum.M}/>
 	);
 }
 
