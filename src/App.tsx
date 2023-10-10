@@ -1,31 +1,33 @@
-import React, { useState } from 'react';
-import { Container } from './components/Container';
-import { Provider } from 'react-redux';
-import { setupStore } from './store/store';
-import { PageContext, Pages, TPageContext } from './pages/PageContext';
-import StartPage from './pages/start-page/StartPage';
-import MenuPage from './pages/menu-page/MenuPage';
-import GamePage from './pages/game-page/GamePage';
+import React, { JSX, Suspense } from 'react';
+import { useAppSelector } from './hooks/redux';
+import { IPagesState } from './store/pages/pages.model';
+import { RootState } from './store/store';
+import Spinner from './components/Spinner';
+import GameOverModal from './modals/GameOverModal';
+import { ThemeProvider } from 'styled-components';
+import { IThemeState } from './store/theme/theme.model';
+import GlobalStyles from './global'
 
-const store = setupStore();
+const StartPage = React.lazy(() => import('./pages/StartPage'));
+const ThemePage = React.lazy(() => import('./pages/ThemePage'));
+const GamePage = React.lazy(() => import('./pages/GamePage'));
+const PauseModal = React.lazy(() => import('./modals/PauseModal'));
+const CountdownModal = React.lazy(() => import('./modals/StartGameModal'));
 
-function App() {
-	const [page, setPage]: TPageContext = useState<Pages>(Pages.START_PAGE);
+function App(): JSX.Element {
+	const { openedPage, openedModal }: IPagesState = useAppSelector((state: RootState) => state.pagesReducer);
+	const { currentTheme }: IThemeState = useAppSelector((state: RootState) => state.themeReducer);
 
 	return (
-		<Provider store={store}>
-			<PageContext.Provider value={[page, setPage]}>
-				<Container>
-					<button onClick={() => setPage(Pages.START_PAGE)}>start</button>
-					<button onClick={() => setPage(Pages.MENU_PAGE)}>menu</button>
-					<button onClick={() => setPage(Pages.GAME_PAGE)}>game</button>
-
-					{page === Pages.START_PAGE && <StartPage/>}
-					{page === Pages.MENU_PAGE && <MenuPage/>}
-					{page === Pages.GAME_PAGE && <GamePage/>}
-				</Container>
-			</PageContext.Provider>
-		</Provider>
+		<ThemeProvider theme={currentTheme}>
+			<GlobalStyles />
+			{openedPage === 'START_PAGE' && <Suspense fallback={<Spinner/>}><StartPage/></Suspense>}
+			{openedPage === 'THEMES_PAGE' && <Suspense fallback={<Spinner/>}><ThemePage/></Suspense>}
+			{openedPage === 'GAME_PAGE' && <Suspense fallback={<Spinner/>}><GamePage/></Suspense>}
+			{openedModal === 'PAUSE_MODAL' && <Suspense fallback={<Spinner/>}><PauseModal/></Suspense>}
+			{openedModal === 'COUNTDOWN_MODAL' && <Suspense fallback={<Spinner/>}><CountdownModal/></Suspense>}
+			{openedModal === "GAMEOVER_MODAL" && <Suspense fallback={<Spinner/>}><GameOverModal/></Suspense>}
+		</ThemeProvider>
 	);
 }
 

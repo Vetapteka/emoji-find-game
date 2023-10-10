@@ -1,10 +1,17 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import simpleEmojiReducer from './simple-emoji/simpleEmoji.sllice';
+import emojiMapperReducer from './emoji-mapper/emojiMapper.slice';
+import timeReducer from './timer/timer.slice';
+import pagesReducer from './pages/pages.slice';
+import userReducer from './user/user.slice';
+import themeReducer from './theme/theme.slice';
 
 export const rootReducer = combineReducers({
-	simpleEmojiReducer
+	emojiMapperReducer,
+	timeReducer,
+	pagesReducer,
+	userReducer,
+	themeReducer
 });
-
 
 export const setupStore = () => {
 	return configureStore({
@@ -12,7 +19,6 @@ export const setupStore = () => {
 	});
 
 };
-
 
 export type RootState = ReturnType<typeof rootReducer>
 export type AppStore = ReturnType<typeof setupStore>
