@@ -8,8 +8,9 @@ import { closeModal } from '../store/pages/pages.slice';
 import DigitProvider from '../components/digits/DigitProvider';
 import { initTimer, startTimer } from '../store/timer/timer.slice';
 import { ModalBackgroundContainer } from '../components/style/ModalBackgroundContainer';
+import { startGame } from '../store/emoji-mapper/emojiMapper.slice';
 
-function CountdownModal(): JSX.Element {
+function StartGameModal(): JSX.Element {
 	const [countdown, setCountdown]: [number, TStateSetter<number>] = useState(COUNTDOWN_TIME_VALUE);
 	const dispatch: AppDispatch = useAppDispatch();
 
@@ -20,6 +21,7 @@ function CountdownModal(): JSX.Element {
 			} else {
 				dispatch(initTimer());
 				dispatch(startTimer());
+				dispatch(startGame());
 				dispatch(closeModal());
 				clearTimeout(timer);
 			}
@@ -37,4 +39,4 @@ function CountdownModal(): JSX.Element {
 	);
 }
 
-export default CountdownModal;
+export default StartGameModal;

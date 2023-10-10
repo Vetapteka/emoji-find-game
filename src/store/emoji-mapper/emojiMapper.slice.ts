@@ -12,18 +12,24 @@ export interface IEmojiMapperState {
 	activeEmojiContainer: SelectedEmojiContainersEnum;
 	rightEmoji: string;
 	leftEmoji: string;
-	targetEmoji: IMergeEmojiCombo;
+	targetEmoji: IMergeEmojiCombo | null;
 	mergedEmojiPath: string;
 	winCount: number;
+	diamondsCount: number;
+	bestScore: number;
+	isItBestScore: boolean;
 }
 
 const initialState: IEmojiMapperState = {
 	activeEmojiContainer: SelectedEmojiContainersEnum.LEFT,
 	rightEmoji: '',
 	leftEmoji: '',
-	targetEmoji: getRandomCombo(),
+	targetEmoji: null,
 	mergedEmojiPath: '',
 	winCount: 0,
+	diamondsCount: 0,
+	bestScore: 0,
+	isItBestScore: false,
 };
 export const emojiMapperSlice = createSlice({
 		name: 'emojiMapper',
@@ -48,8 +54,17 @@ export const emojiMapperSlice = createSlice({
 
 					state.mergedEmojiPath = mergedEmojiCombo ? googleRequestUrl(mergedEmojiCombo) : '';
 
-					if (mergedEmojiCombo && compareCombo(mergedEmojiCombo, state.targetEmoji)) {
+
+					if (state.targetEmoji && mergedEmojiCombo && compareCombo(mergedEmojiCombo, state.targetEmoji)) {
 						state.winCount += 1;
+						state.diamondsCount += 1;
+
+						if (!state.isItBestScore && state.winCount > state.bestScore)
+							state.isItBestScore = true;
+
+						if (state.isItBestScore)
+							state.bestScore += 1;
+
 						state.targetEmoji = getRandomCombo();
 					}
 
@@ -58,9 +73,21 @@ export const emojiMapperSlice = createSlice({
 			activateEmojiContainer: (state, action: PayloadAction<SelectedEmojiContainersEnum>): void => {
 				state.activeEmojiContainer = action.payload;
 			},
+			startGame: (state): void => {
+				state.targetEmoji = getRandomCombo();
+			},
+			resetState: (state): void => {
+				state.isItBestScore = false;
+				state.winCount = 0;
+				state.leftEmoji = '';
+				state.rightEmoji = '';
+				state.targetEmoji = null;
+				state.mergedEmojiPath = '';
+				state.activeEmojiContainer = SelectedEmojiContainersEnum.LEFT;
+			}
 		}
 	})
 ;
 
-export const { setSelectedEmoji, activateEmojiContainer } = emojiMapperSlice.actions;
+export const { setSelectedEmoji, startGame, resetState, activateEmojiContainer } = emojiMapperSlice.actions;
 export default emojiMapperSlice.reducer;

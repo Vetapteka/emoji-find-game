@@ -12,7 +12,7 @@ const StartPage = React.lazy(() => import('./pages/StartPage'));
 const ThemePage = React.lazy(() => import('./pages/ThemePage'));
 const GamePage = React.lazy(() => import('./pages/GamePage'));
 const PauseModal = React.lazy(() => import('./modals/PauseModal'));
-const CountdownModal = React.lazy(() => import('./modals/CountdownModal'));
+const CountdownModal = React.lazy(() => import('./modals/StartGameModal'));
 
 function App(): JSX.Element {
 	const { openedPage, openedModal }: IPagesState = useAppSelector((state: RootState) => state.pagesReducer);

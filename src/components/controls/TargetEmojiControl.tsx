@@ -11,11 +11,12 @@ function TargetEmojiControl(): JSX.Element {
 
 	return (
 		<PenBorder size={TARGET_EMOJI_CONTAINER_SIZE}>
-			<img
-				loading="eager"
-				alt="target_emoji"
-				src={googleRequestUrl(targetEmoji)}
-			/>
+			{targetEmoji &&
+				<img
+					loading="eager"
+					alt="target_emoji"
+					src={googleRequestUrl(targetEmoji)}
+				/>}
 		</PenBorder>
 	);
 }

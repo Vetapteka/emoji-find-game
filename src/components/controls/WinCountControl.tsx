@@ -4,6 +4,7 @@ import Icon, { IconSizeEnum } from '../icons/Icon';
 import { useAppSelector } from '../../hooks/redux';
 import { RootState } from '../../store/store';
 import styled from 'styled-components';
+import { IEmojiMapperState } from '../../store/emoji-mapper/emojiMapper.slice';
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,16 +12,20 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-function WinCountControl(): JSX.Element {
-	const winCount: number = useAppSelector((state: RootState) => state.emojiMapperReducer.winCount);
-	const bestScore: number = useAppSelector((state: RootState) => state.userReducer.bestScore);
+interface WinCountControlProps {
+	size?: IconSizeEnum;
+}
 
-	const isBestScoreChange = winCount > bestScore;
+function WinCountControl({ size }: WinCountControlProps): JSX.Element {
+	const {
+		winCount,
+		isItBestScore
+	}: IEmojiMapperState = useAppSelector((state: RootState) => state.emojiMapperReducer);
 
 	return (
 		<Wrapper>
-			{isBestScoreChange && <Icon icon="CROWN_ICON" size={IconSizeEnum.XS}/>}
-			<DigitProvider n={winCount} isBold={isBestScoreChange} size={IconSizeEnum.S}/>
+			{isItBestScore && <Icon icon="CROWN_ICON" size={IconSizeEnum.XS}/>}
+			<DigitProvider n={winCount} isBold={isItBestScore} size={size ?? IconSizeEnum.S}/>
 		</Wrapper>
 	);
 }

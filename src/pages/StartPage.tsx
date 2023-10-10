@@ -9,6 +9,7 @@ import { openModal, openPage } from '../store/pages/pages.slice';
 import { NavigationContainer } from '../components/style/NavigationContainer';
 import BestScoreControl from '../components/controls/BestScoreControl';
 import ThemesControl from '../components/controls/ThemesControl';
+import { resetState } from '../store/emoji-mapper/emojiMapper.slice';
 
 const Wrapper = styled(PageContainer)`
   display: flex;
@@ -27,6 +28,7 @@ function StartPage(): JSX.Element {
 	const startGameHandler = (): void => {
 		dispatch(openPage('GAME_PAGE'));
 		dispatch(openModal('COUNTDOWN_MODAL'));
+		dispatch(resetState());
 	};
 
 

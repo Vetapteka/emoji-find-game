@@ -5,7 +5,7 @@ import { useAppSelector } from '../../hooks/redux';
 import { RootState } from '../../store/store';
 
 function BestScoreControl(): JSX.Element {
-	const bestScore: number = useAppSelector((state: RootState) => state.userReducer.bestScore);
+	const bestScore: number = useAppSelector((state: RootState) => state.emojiMapperReducer.bestScore);
 
 	return (
 		<>
