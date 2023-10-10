@@ -3,13 +3,10 @@ import { PageContainer, PageContent } from '../components/style/PageContainer';
 import styled from 'styled-components';
 import Icon, { IconSizeEnum } from '../components/icons/Icon';
 import DiamondControl from '../components/controls/DiamondControl';
-import { useAppDispatch } from '../hooks/redux';
-import { AppDispatch } from '../store/store';
-import { openModal, openPage } from '../store/pages/pages.slice';
 import { NavigationContainer } from '../components/style/NavigationContainer';
 import BestScoreControl from '../components/controls/BestScoreControl';
 import ThemesControl from '../components/controls/ThemesControl';
-import { resetState } from '../store/emoji-mapper/emojiMapper.slice';
+import useStartGame from '../hooks/useStartGame';
 
 const Wrapper = styled(PageContainer)`
   display: flex;
@@ -24,13 +21,7 @@ const Content = styled(PageContent)`
 `;
 
 function StartPage(): JSX.Element {
-	const dispatch: AppDispatch = useAppDispatch();
-	const startGameHandler = (): void => {
-		dispatch(openPage('GAME_PAGE'));
-		dispatch(openModal('COUNTDOWN_MODAL'));
-		dispatch(resetState());
-	};
-
+	const startGameHandler = useStartGame();
 
 	return (
 		<Wrapper>

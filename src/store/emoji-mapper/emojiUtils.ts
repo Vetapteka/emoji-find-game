@@ -46,7 +46,7 @@ export const findValidEmojiCombo = (leftEmoji: string, rightEmoji: string): IMer
 		mergeEmojiData[leftEmoji]
 			.filter((combo: IMergeEmojiCombo) => combo.leftEmoji === rightEmoji && combo.rightEmoji === leftEmoji)
 			.sort((a: IMergeEmojiCombo, b: IMergeEmojiCombo): number => (a.date > b.date ? 1 : -1))
-			.pop()!
+			.pop()! ?? null
 	);
 };
 
