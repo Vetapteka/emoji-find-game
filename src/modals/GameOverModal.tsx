@@ -4,6 +4,11 @@ import { NavigationContainer } from '../components/style/NavigationContainer';
 import BackHomeControl from '../components/controls/BackHomeControl';
 import SettingsControl from '../components/controls/SettingsControl';
 import styled from 'styled-components';
+import ReplayControl from '../components/controls/ReplayControl';
+import ThemesControl from '../components/controls/ThemesControl';
+import { FooterContainer } from '../components/style/FooterContainer';
+import WinCountControl from '../components/controls/WinCountControl';
+import { IconSizeEnum } from '../components/icons/Icon';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,6 +25,11 @@ function GameOverModal() {
 					<BackHomeControl/>
 					<SettingsControl/>
 				</NavigationContainer>
+				<WinCountControl size={IconSizeEnum.L}/>
+				<FooterContainer>
+					<ReplayControl/>
+					<ThemesControl/>
+				</FooterContainer>
 			</Wrapper>
 		</ModalContainer>
 	);

@@ -7,6 +7,7 @@ import ThemesControl from '../components/controls/ThemesControl';
 import ReplayControl from '../components/controls/ReplayControl';
 import { NavigationContainer } from '../components/style/NavigationContainer';
 import BackHomeControl from '../components/controls/BackHomeControl';
+import { FooterContainer } from '../components/style/FooterContainer';
 
 
 const Wrapper = styled.div`
@@ -14,13 +15,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-`;
-
-const Footer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
 `;
 
@@ -33,10 +27,10 @@ function PauseModal(): JSX.Element {
 					<SettingsControl/>
 				</NavigationContainer>
 				<ContinueGameControl/>
-				<Footer>
+				<FooterContainer>
 					<ReplayControl/>
 					<ThemesControl/>
-				</Footer>
+				</FooterContainer>
 			</Wrapper>
 		</ModalContainer>
 	);
