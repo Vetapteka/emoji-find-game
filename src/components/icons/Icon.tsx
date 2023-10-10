@@ -21,6 +21,7 @@ import ReplayIcon from './ReplayIcon';
 import CakeIcon from './CakeIcon';
 import GreenIcon from './GreenIcon';
 import BackIcon from './BackIcon';
+import CheckMarkIcon from './CheckMarkIcon';
 
 export enum IconSizeEnum {
 	XXL = '30vh',
@@ -78,6 +79,7 @@ function Icon({ size, icon, onClick, ...props }: IconProps) {
 			{icon === 'BALL_ICON' && <BallIcon/>}
 			{icon === 'CROWN_ICON' && <CrownIcon/>}
 			{icon === 'CAKE_ICON' && <CakeIcon/>}
+			{icon === 'CHECK_MARK_ICON' && <CheckMarkIcon/>}
 			{icon === 'DIAMOND_ICON' && <DiamondIcon/>}
 			{icon === 'GREEN_ICON' && <GreenIcon/>}
 			{icon === 'HEART_ICON' && <HeartIcon/>}
