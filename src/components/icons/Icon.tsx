@@ -22,6 +22,7 @@ import CakeIcon from './CakeIcon';
 import GreenIcon from './GreenIcon';
 import BackIcon from './BackIcon';
 import CheckMarkIcon from './CheckMarkIcon';
+import RewardIcon from './RewardIcon';
 
 export enum IconSizeEnum {
 	XXL = '30vh',
@@ -51,6 +52,7 @@ export type TIcon =
 	| 'PROMPT_ICON'
 	| 'QUESTION_ICON'
 	| 'REPLAY_ICON'
+	| 'REWARD_ICON'
 	| 'SETTINGS_ICON'
 	| 'SMILE_ICON'
 	| 'THEME_ICON'
@@ -70,6 +72,7 @@ interface IconProps {
 	size: IconSizeEnum | string;
 	onClick?: () => void;
 	style?: {};
+	className?: string
 }
 
 function Icon({ size, icon, onClick, ...props }: IconProps) {
@@ -92,6 +95,7 @@ function Icon({ size, icon, onClick, ...props }: IconProps) {
 			{icon === 'PLUS_ICON' && <PlusIcon/>}
 			{icon === 'QUESTION_ICON' && <QuestionIcon/>}
 			{icon === 'REPLAY_ICON' && <ReplayIcon/>}
+			{icon === 'REWARD_ICON' && <RewardIcon/>}
 			{icon === 'SETTINGS_ICON' && <SettingsIcon/>}
 			{icon === 'SMILE_ICON' && <SmileIcon/>}
 			{icon === 'THEME_ICON' && <ThemeIcon/>}
