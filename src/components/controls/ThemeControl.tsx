@@ -10,9 +10,8 @@ import { setTheme } from '../../store/theme/theme.slice';
 
 
 const ThemeContainer = styled(NavigationContainer)`
-  padding-top: 2vh;
   padding-right: 4vh;
-  padding-bottom: 2vh;
+  padding-left: 2vh;
   box-sizing: border-box;
 `;
 
