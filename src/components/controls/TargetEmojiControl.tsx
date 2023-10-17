@@ -15,9 +15,9 @@ const Wrapper = styled.div`
   }
 `;
 
-function TargetEmojiControl(): JSX.Element {
+function TargetEmojiControl({...props}): JSX.Element {
 	return (
-		<Wrapper>
+		<Wrapper {...props}>
 			<UpdateEmojiControl className="update"/>
 			<PenBorder size={TARGET_EMOJI_CONTAINER_SIZE}>
 				<TargetEmojiSimpleControl/>

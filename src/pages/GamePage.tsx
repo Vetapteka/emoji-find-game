@@ -13,6 +13,7 @@ import DiamondScoreControl from '../components/controls/DiamondScoreControl';
 import WinCountControl from '../components/controls/WinCountControl';
 import { KEYBOARD_HEIGHT } from '../constants';
 import KeyboardBorder from '../components/borders/KeyboardBorder';
+import PromptControl from '../components/controls/PromptControl';
 
 const Wrapper = styled(PageContainer)`
   display: flex;
@@ -20,9 +21,11 @@ const Wrapper = styled(PageContainer)`
   position: relative;
 `;
 
-const CountContainer = styled.div`
-  position: absolute;
-  top: calc(${IconSizeEnum.S} + 4vmin);
+const Header = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
 `;
 
 const Content = styled(PageContent)`
@@ -40,12 +43,15 @@ function GamePage(): JSX.Element {
 				<TimeControl/>
 				<PauseControl/>
 			</NavigationContainer>
-			<CountContainer>
-				<WinCountControl/>
-				<DiamondScoreControl size={IconSizeEnum.XS}/>
-			</CountContainer>
 			<Content>
-				<TargetEmojiControl/>
+				<Header>
+					<div>
+						<WinCountControl/>
+						<DiamondScoreControl size={IconSizeEnum.XS}/>
+					</div>
+					<TargetEmojiControl style={{ alignSelf: 'center' }}/>
+					<PromptControl/>
+				</Header>
 				<MergeEmojiControl/>
 				<SelectedEmojiPanel/>
 			</Content>

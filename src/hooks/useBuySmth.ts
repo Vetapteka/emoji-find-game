@@ -1,9 +1,10 @@
 import { AppDispatch, RootState } from '../store/store';
 import { useAppDispatch, useAppSelector } from './redux';
-import { decreaseDiamonds, updateTargetEmoji } from '../store/emoji-mapper/emojiMapper.slice';
+import { decreaseDiamonds, showAnswer, updateTargetEmoji } from '../store/emoji-mapper/emojiMapper.slice';
 
 export enum ToDoEnum {
 	UPDATE_EMOJI,
+	SHOW_ANSWER
 }
 
 interface UseBuySmthFuncs {
@@ -27,6 +28,10 @@ function UseBuySmth(): UseBuySmthFuncs {
 			case ToDoEnum.UPDATE_EMOJI:
 				dispatch(updateTargetEmoji());
 				break;
+			case ToDoEnum.SHOW_ANSWER:
+				dispatch(showAnswer());
+				break;
+
 		}
 	};
 

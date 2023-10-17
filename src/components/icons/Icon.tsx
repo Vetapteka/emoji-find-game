@@ -23,6 +23,7 @@ import GreenIcon from './GreenIcon';
 import BackIcon from './BackIcon';
 import CheckMarkIcon from './CheckMarkIcon';
 import RewardIcon from './RewardIcon';
+import PromptIcon from './PromptIcon';
 
 export enum IconSizeEnum {
 	XXL = '30vh',
@@ -93,6 +94,7 @@ function Icon({ size, icon, onClick, ...props }: IconProps) {
 			{icon === 'PAUSE_ICON' && <PauseIcon/>}
 			{icon === 'PLAY_ICON' && <PlayIcon/>}
 			{icon === 'PLUS_ICON' && <PlusIcon/>}
+			{icon === 'PROMPT_ICON' && <PromptIcon/>}
 			{icon === 'QUESTION_ICON' && <QuestionIcon/>}
 			{icon === 'REPLAY_ICON' && <ReplayIcon/>}
 			{icon === 'REWARD_ICON' && <RewardIcon/>}

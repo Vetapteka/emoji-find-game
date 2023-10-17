@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import KeyboardBorder from '../borders/KeyboardBorder';
 import EmojiKeyboardSwitcher from './EmojiKeyboardSwitcher';
 import Icon, { IconSizeEnum, TIcon } from '../icons/Icon';
-import { KEYBOARD_HEIGHT } from '../../constants';
+import { KEY_EMOJI_SIZE, KEYBOARD_HEIGHT } from '../../constants';
 import { TEmojiListKeys } from '../../store/emoji-mapper/emojiMapper.model';
 import { emojiCodes } from '../../data/emojiCodes';
 import { setSelectedEmoji } from '../../store/emoji-mapper/emojiMapper.slice';
@@ -14,8 +14,8 @@ import { nanoid } from 'nanoid';
 
 const Keys = styled.div`
   & > * {
-    width: calc(${KEYBOARD_HEIGHT} / 6.6);
-    height: calc(${KEYBOARD_HEIGHT} / 6.6);
+    width: ${KEY_EMOJI_SIZE};
+    height: ${KEY_EMOJI_SIZE};
     margin: 0.3%;
 	display: inline-block;
   }

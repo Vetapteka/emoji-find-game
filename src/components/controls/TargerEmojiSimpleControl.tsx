@@ -1,5 +1,5 @@
 import React, { JSX } from 'react';
-import { googleRequestUrl } from '../../store/emoji-mapper/emojiUtils';
+import { googleRequestUrl, ITargetEmoji } from '../../store/emoji-mapper/emojiUtils';
 import { useAppSelector } from '../../hooks/redux';
 import { RootState } from '../../store/store';
 import { IEmojiMapperState } from '../../store/emoji-mapper/emojiMapper.slice';
@@ -16,7 +16,7 @@ function TargetEmojiSimpleControl({ ...props }: TargetEmojiSimpleControlProps): 
 			{...props}
 			loading="eager"
 			alt="target_emoji"
-			src={googleRequestUrl(targetEmoji)}/>
+			src={googleRequestUrl(targetEmoji.res)}/>
 		}</>
 	);
 }

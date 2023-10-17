@@ -5,14 +5,17 @@ import {
 	findValidEmojiCombo,
 	getRandomCombo,
 	googleRequestUrl,
-	IMergeEmojiCombo
+	IMergeEmojiCombo,
+	ITargetEmoji
 } from './emojiUtils';
 
 export interface IEmojiMapperState {
 	activeEmojiContainer: SelectedEmojiContainersEnum;
 	rightEmoji: string;
 	leftEmoji: string;
-	targetEmoji: IMergeEmojiCombo | null;
+	targetEmoji: ITargetEmoji | null;
+	answer1: string,
+	answer2: string,
 	mergedEmojiPath: string;
 	winCount: number;
 	diamondsCount: number;
@@ -25,6 +28,8 @@ const initialState: IEmojiMapperState = {
 	rightEmoji: '',
 	leftEmoji: '',
 	targetEmoji: null,
+	answer1: '',
+	answer2: '',
 	mergedEmojiPath: '',
 	winCount: 0,
 	diamondsCount: 0,
@@ -55,7 +60,7 @@ export const emojiMapperSlice = createSlice({
 					state.mergedEmojiPath = mergedEmojiCombo ? googleRequestUrl(mergedEmojiCombo) : '';
 
 
-					if (state.targetEmoji && mergedEmojiCombo && compareCombo(mergedEmojiCombo, state.targetEmoji)) {
+					if (state.targetEmoji && mergedEmojiCombo && compareCombo(mergedEmojiCombo, state.targetEmoji.res)) {
 						state.winCount += 1;
 						state.diamondsCount += 1;
 
@@ -66,6 +71,8 @@ export const emojiMapperSlice = createSlice({
 							state.bestScore += 1;
 
 						state.targetEmoji = getRandomCombo();
+						state.answer1 = '';
+						state.answer2 = '';
 					}
 
 				}
@@ -75,24 +82,33 @@ export const emojiMapperSlice = createSlice({
 			},
 			updateTargetEmoji: (state): void => {
 				state.targetEmoji = getRandomCombo();
+				state.answer1 = '';
+				state.answer2 = '';
 			},
 			initScore: (state): void => {
 				state.isItBestScore = false;
 				state.winCount = 0;
 				state.leftEmoji = '';
 				state.rightEmoji = '';
+				state.answer1 = '';
+				state.answer2 = '';
 				state.targetEmoji = null;
 				state.mergedEmojiPath = '';
 				state.activeEmojiContainer = SelectedEmojiContainersEnum.LEFT;
 			},
 			decreaseDiamonds: (state, action: PayloadAction<number>): void => {
 				state.diamondsCount -= action.payload;
-			}
+			},
+			showAnswer: (state): void => {
+				state.answer1 = state.targetEmoji?.emoji1 || '';
+				state.answer2 = state.targetEmoji?.emoji2 || '';
+			},
 		}
 	})
 ;
 
 export const {
+	showAnswer,
 	setSelectedEmoji,
 	decreaseDiamonds,
 	updateTargetEmoji,

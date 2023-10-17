@@ -15,13 +15,20 @@ const Wrapper = styled.div`
 `;
 
 function SelectedEmojiPanel(): JSX.Element {
-	const { rightEmoji, leftEmoji }: IEmojiMapperState = useAppSelector((state: RootState) => state.emojiMapperReducer);
+	const {
+		rightEmoji,
+		leftEmoji,
+		answer2,
+		answer1
+	}: IEmojiMapperState = useAppSelector((state: RootState) => state.emojiMapperReducer);
 	return (
 		<Wrapper>
-			<SelectedEmojiControl type={SelectedEmojiContainersEnum.LEFT}
+			<SelectedEmojiControl prompt={answer1}
+								  type={SelectedEmojiContainersEnum.LEFT}
 								  selectedEmoji={leftEmoji}></SelectedEmojiControl>
 			<Icon icon="PLUS_ICON" size={IconSizeEnum.M}/>
-			<SelectedEmojiControl type={SelectedEmojiContainersEnum.RIGHT}
+			<SelectedEmojiControl prompt={answer2}
+								  type={SelectedEmojiContainersEnum.RIGHT}
 								  selectedEmoji={rightEmoji}></SelectedEmojiControl>
 		</Wrapper>
 	);

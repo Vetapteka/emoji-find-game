@@ -17,14 +17,21 @@ export const compareCombo = (combo1: IMergeEmojiCombo, combo2: IMergeEmojiCombo)
 	return combo1.leftEmoji === combo2.leftEmoji && combo1.rightEmoji === combo2.rightEmoji;
 };
 
-export const getRandomCombo = ():  IMergeEmojiCombo => {
-	let res;
-	while (!res) {
-		const randomEmoji1 = getRandomEmoji();
-		const randomEmoji2 = getRandomEmoji();
-		res = findValidEmojiCombo(randomEmoji1, randomEmoji2);
+export interface ITargetEmoji {
+	emoji1: string,
+	emoji2: string,
+	res: IMergeEmojiCombo
+}
+
+
+export const getRandomCombo = (): ITargetEmoji => {
+	let res, emoji1, emoji2;
+	while (!res || !emoji2 || !emoji1) {
+		emoji1 = getRandomEmoji();
+		emoji2 = getRandomEmoji();
+		res = findValidEmojiCombo(emoji1, emoji2);
 	}
-	return res;
+	return { emoji1, emoji2, res };
 };
 
 const getRandomEmoji = (): string => {
