@@ -11,10 +11,12 @@ export const MERGE_EMOJI_SIZE = '10vh';
 
 export const COUNTDOWN_TIME_VALUE = 3;
 
-export const GAME_DURATION = 100;
+export const GAME_DURATION = 300;
 
 export const TIME_DASH_INTERVAL = 1;
 
 export const TIME_DASH_WIDTH = `calc(100% /${GAME_DURATION / TIME_DASH_INTERVAL})`;
+
+export const UPDATE_EMOJI_PRICE = 1;
 
 

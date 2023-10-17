@@ -13,10 +13,10 @@ const ThemePage = React.lazy(() => import('./pages/ThemePage'));
 const GamePage = React.lazy(() => import('./pages/GamePage'));
 const PauseModal = React.lazy(() => import('./modals/PauseModal'));
 const CountdownModal = React.lazy(() => import('./modals/StartGameModal'));
-const UpdateTargetEmojiModal = React.lazy(() => import('./modals/UpdateTargetEmojiModal'));
+const PromptModal = React.lazy(() => import('./modals/PromptModal'));
 
 function App(): JSX.Element {
-	const { openedPage, openedModal }: IPagesState = useAppSelector((state: RootState) => state.pagesReducer);
+	const { openedPage, openedModal, modalProps }: IPagesState = useAppSelector((state: RootState) => state.pagesReducer);
 	const { currentTheme }: IThemeState = useAppSelector((state: RootState) => state.themeReducer);
 
 	return (
@@ -28,7 +28,7 @@ function App(): JSX.Element {
 			{openedModal === 'PAUSE_MODAL' && <Suspense fallback={<Spinner/>}><PauseModal/></Suspense>}
 			{openedModal === 'COUNTDOWN_MODAL' && <Suspense fallback={<Spinner/>}><CountdownModal/></Suspense>}
 			{openedModal === "GAMEOVER_MODAL" && <Suspense fallback={<Spinner/>}><GameOverModal/></Suspense>}
-			{openedModal === "UPDATE_EMOJI_MODAL" && <Suspense fallback={<Spinner/>}><UpdateTargetEmojiModal/></Suspense>}
+			{openedModal === "PROMPT_MODAL" && <Suspense fallback={<Spinner/>}><PromptModal {...modalProps}/></Suspense>}
 		</ThemeProvider>
 	);
 }

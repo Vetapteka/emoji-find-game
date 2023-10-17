@@ -3,11 +3,12 @@ import PenBorder from '../borders/PenBorder';
 
 interface PriceContainerProps {
 	children: JSX.Element;
+	onClick?: () => void;
 }
 
-function PriceContainer({ children }: PriceContainerProps): JSX.Element {
+function PriceContainer({ children, ...props }: PriceContainerProps): JSX.Element {
 	return (
-		<PenBorder size="17vh" isCenter={true} isHoverActive={true}>{children}</PenBorder>
+		<PenBorder {...props} size="17vh" isCenter={true} isHoverActive={true}>{children}</PenBorder>
 	);
 }
 

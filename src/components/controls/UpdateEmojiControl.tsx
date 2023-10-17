@@ -4,12 +4,13 @@ import { AppDispatch } from '../../store/store';
 import { useAppDispatch } from '../../hooks/redux';
 import { openModal } from '../../store/pages/pages.slice';
 import { stopTimer } from '../../store/timer/timer.slice';
+import { ToDoEnum } from '../../hooks/useBuySmth';
+import { UPDATE_EMOJI_PRICE } from '../../constants';
 
 function UpdateEmojiControl(props: any): JSX.Element {
-
 	const dispatch: AppDispatch = useAppDispatch();
 	const openUpdateEmojiModalHandler = (): void => {
-		dispatch(openModal('UPDATE_EMOJI_MODAL'));
+		dispatch(openModal({ type: 'PROMPT_MODAL', props: { toDo: ToDoEnum.UPDATE_EMOJI, price: UPDATE_EMOJI_PRICE } }));
 		dispatch(stopTimer());
 	};
 

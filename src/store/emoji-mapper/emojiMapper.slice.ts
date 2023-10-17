@@ -73,7 +73,7 @@ export const emojiMapperSlice = createSlice({
 			activateEmojiContainer: (state, action: PayloadAction<SelectedEmojiContainersEnum>): void => {
 				state.activeEmojiContainer = action.payload;
 			},
-			startGame: (state): void => {
+			updateTargetEmoji: (state): void => {
 				state.targetEmoji = getRandomCombo();
 			},
 			initScore: (state): void => {
@@ -84,10 +84,19 @@ export const emojiMapperSlice = createSlice({
 				state.targetEmoji = null;
 				state.mergedEmojiPath = '';
 				state.activeEmojiContainer = SelectedEmojiContainersEnum.LEFT;
+			},
+			decreaseDiamonds: (state, action: PayloadAction<number>): void => {
+				state.diamondsCount -= action.payload;
 			}
 		}
 	})
 ;
 
-export const { setSelectedEmoji, startGame, initScore, activateEmojiContainer } = emojiMapperSlice.actions;
+export const {
+	setSelectedEmoji,
+	decreaseDiamonds,
+	updateTargetEmoji,
+	initScore,
+	activateEmojiContainer
+} = emojiMapperSlice.actions;
 export default emojiMapperSlice.reducer;

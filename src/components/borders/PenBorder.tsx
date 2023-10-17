@@ -28,6 +28,10 @@ const Wrapper = styled.div<WrapperProps>`
   width: ${({ size, width }) => width || size || '100px'};
   position: relative;
 
+  &:hover > :first-child {
+    stroke-dasharray: 10 10;
+  }
+
   & > .border {
     width: 100%;
     height: 100%;
