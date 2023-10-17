@@ -9,7 +9,7 @@ function PauseControl(): JSX.Element {
 	const dispatch: AppDispatch = useAppDispatch();
 	const openPauseModalHandler = () => {
 		dispatch(stopTimer());
-		dispatch(openModal('PAUSE_MODAL'));
+		dispatch(openModal({type: 'PAUSE_MODAL'}));
 	};
 	return (
 		<Icon icon="PAUSE_ICON" size={IconSizeEnum.S} onClick={openPauseModalHandler}/>

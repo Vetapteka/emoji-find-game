@@ -10,7 +10,7 @@ function useCustomFunction() {
 	const startGameHandler = (): void => {
 		dispatch(initTimer());
 		dispatch(openPage('GAME_PAGE'));
-		dispatch(openModal('COUNTDOWN_MODAL'));
+		dispatch(openModal({type: 'COUNTDOWN_MODAL'}));
 		dispatch(initScore());
 	};
 

@@ -38,7 +38,7 @@ export const timerSlice = createSlice({
 					if (TIME < 0) {
 						intervalId && clearInterval(intervalId);
 						store.dispatch(setTimeOver());
-						store.dispatch(openModal('GAMEOVER_MODAL'));
+						store.dispatch(openModal({type: 'GAMEOVER_MODAL'}));
 					}
 				}, 1000);
 

@@ -9,13 +9,19 @@ export type TModals =
 	'SETTINGS_MODAL' |
 	'PAUSE_MODAL' |
 	'COUNTDOWN_MODAL' |
-	'UPDATE_EMOJI_MODAL' |
+	'PROMPT_MODAL' |
 	'GAMEOVER_MODAL' |
 	'UNKNOWN';
+
+export interface IOpenedModal{
+	type: TModals,
+	props?: any,
+}
 
 export interface IPagesState {
 	openedPage: TPages;
 	previousPage: TPages;
 	openedModal: TModals;
 	previousModal: TModals;
+	modalProps: any;
 }

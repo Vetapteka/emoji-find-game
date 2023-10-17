@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IPagesState, TPages, TModals } from './pages.model';
+import { IPagesState, TPages, IOpenedModal } from './pages.model';
 
 const initialState: IPagesState = {
 	openedPage: 'START_PAGE',
 	previousPage: 'UNKNOWN',
 	openedModal: 'UNKNOWN',
 	previousModal: 'UNKNOWN',
+	modalProps: null
 };
 
 export const pagesSlice = createSlice({
@@ -24,9 +25,10 @@ export const pagesSlice = createSlice({
 			state.openedModal = state.previousModal;
 			console.log(state.previousPage, state.openedModal, state.openedPage)
 		},
-		openModal: (state, action: PayloadAction<TModals>): void => {
+		openModal: (state, action: PayloadAction<IOpenedModal>): void => {
 			console.log('open modal ', action.payload);
-			state.openedModal = action.payload;
+			state.openedModal = action.payload.type;
+			state.modalProps = action.payload.props;
 		},
 		closeModal: (state): void => {
 			console.log('close modal ');
