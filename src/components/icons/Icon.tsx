@@ -24,6 +24,8 @@ import BackIcon from './BackIcon';
 import CheckMarkIcon from './CheckMarkIcon';
 import RewardIcon from './RewardIcon';
 import PromptIcon from './PromptIcon';
+import ArrowIcon from './ArrowIcon';
+import EqualIcon from './EqualIcon';
 
 export enum IconSizeEnum {
 	XXL = '30vh',
@@ -35,12 +37,14 @@ export enum IconSizeEnum {
 }
 
 export type TIcon =
-	'BACK_ICON'
+	'ARROW_ICON'
+	| 'BACK_ICON'
 	| 'BALL_ICON'
 	| 'CHECK_MARK_ICON'
 	| 'CROWN_ICON'
 	| 'CAKE_ICON'
 	| 'DIAMOND_ICON'
+	| 'EQUAL_ICON'
 	| 'GREEN_ICON'
 	| 'HEART_ICON'
 	| 'HOME_ICON'
@@ -79,12 +83,14 @@ interface IconProps {
 function Icon({ size, icon, onClick, ...props }: IconProps) {
 	return (
 		<Wrapper {...props} onClick={onClick} size={size}>
+			{icon === 'ARROW_ICON' && <ArrowIcon/>}
 			{icon === 'BACK_ICON' && <BackIcon/>}
 			{icon === 'BALL_ICON' && <BallIcon/>}
 			{icon === 'CROWN_ICON' && <CrownIcon/>}
 			{icon === 'CAKE_ICON' && <CakeIcon/>}
 			{icon === 'CHECK_MARK_ICON' && <CheckMarkIcon/>}
 			{icon === 'DIAMOND_ICON' && <DiamondIcon/>}
+			{icon === 'EQUAL_ICON' && <EqualIcon/>}
 			{icon === 'GREEN_ICON' && <GreenIcon/>}
 			{icon === 'HEART_ICON' && <HeartIcon/>}
 			{icon === 'HOME_ICON' && <HomeIcon/>}

@@ -13,6 +13,7 @@ export interface IEmojiMapperState {
 	activeEmojiContainer: SelectedEmojiContainersEnum;
 	rightEmoji: string;
 	leftEmoji: string;
+	previousTargetEmoji: ITargetEmoji | null;
 	targetEmoji: ITargetEmoji | null;
 	answer1: string,
 	answer2: string,
@@ -27,12 +28,13 @@ const initialState: IEmojiMapperState = {
 	activeEmojiContainer: SelectedEmojiContainersEnum.LEFT,
 	rightEmoji: '',
 	leftEmoji: '',
+	previousTargetEmoji: null,
 	targetEmoji: null,
 	answer1: '',
 	answer2: '',
 	mergedEmojiPath: '',
 	winCount: 0,
-	diamondsCount: 0,
+	diamondsCount: 199,
 	bestScore: 0,
 	isItBestScore: false,
 };
@@ -71,6 +73,7 @@ export const emojiMapperSlice = createSlice({
 							state.bestScore += 1;
 
 						state.targetEmoji = getRandomCombo();
+						state.previousTargetEmoji = state.targetEmoji;
 						state.answer1 = '';
 						state.answer2 = '';
 					}
@@ -79,6 +82,9 @@ export const emojiMapperSlice = createSlice({
 			},
 			activateEmojiContainer: (state, action: PayloadAction<SelectedEmojiContainersEnum>): void => {
 				state.activeEmojiContainer = action.payload;
+			},
+			updatePreviousTargetEmoji: (state): void => {
+				state.previousTargetEmoji = state.targetEmoji;
 			},
 			updateTargetEmoji: (state): void => {
 				state.targetEmoji = getRandomCombo();
@@ -93,6 +99,7 @@ export const emojiMapperSlice = createSlice({
 				state.answer1 = '';
 				state.answer2 = '';
 				state.targetEmoji = null;
+				state.previousTargetEmoji = null;
 				state.mergedEmojiPath = '';
 				state.activeEmojiContainer = SelectedEmojiContainersEnum.LEFT;
 			},
@@ -112,6 +119,7 @@ export const {
 	setSelectedEmoji,
 	decreaseDiamonds,
 	updateTargetEmoji,
+	updatePreviousTargetEmoji,
 	initScore,
 	activateEmojiContainer
 } = emojiMapperSlice.actions;

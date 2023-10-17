@@ -7,26 +7,24 @@ import { NavigationContainer } from '../components/style/NavigationContainer';
 import DiamondScoreControl from '../components/controls/DiamondScoreControl';
 import styled from 'styled-components';
 import ContinueGameControl from '../components/controls/ContinueGameControl';
-import TargetEmojiSimpleControl from '../components/controls/TargerEmojiSimpleControl';
 import BuyForDiamondsControl from '../components/controls/BuyForDiamondsControl';
 import { ToDoEnum } from '../hooks/useBuySmth';
+import UpdateEmojiPromptContent from '../components/controls/UpdateEmojiPromptContent';
+import ShowAnswerPromptContent from '../components/controls/ShowAnswerPromptContent';
 
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
+`;
 
-  & > .content {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    & > * {
-      width: 9vh;
-    }
-  }
+const Content = styled.div`
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 interface PromptModalProps {
@@ -42,9 +40,12 @@ function PromptModal({ toDo, price }: PromptModalProps): JSX.Element {
 					<ContinueGameControl size={IconSizeEnum.S} isBackIcon={true}/>
 					<DiamondScoreControl size={IconSizeEnum.S}/>
 				</NavigationContainer>
-				<div className="content">
-					<TargetEmojiSimpleControl className="emoji"/>
-				</div>
+				<Content>
+					{toDo === ToDoEnum.UPDATE_EMOJI
+						? <UpdateEmojiPromptContent/>
+						: <ShowAnswerPromptContent/>
+					}
+				</Content>
 				<FooterContainer>
 					<RewardVideoControl withBorder={true} toDo={toDo}/>
 					<BuyForDiamondsControl price={price} toDo={toDo}/>
