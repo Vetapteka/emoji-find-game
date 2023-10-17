@@ -1,4 +1,4 @@
-import { JSX, useEffect } from 'react';
+import { JSX } from 'react';
 import styled from 'styled-components';
 import { PageContainer, PageContent } from '../components/style/PageContainer';
 import { NavigationContainer } from '../components/style/NavigationContainer';
@@ -19,13 +19,19 @@ const Wrapper = styled(PageContainer)`
   display: flex;
   flex-direction: column;
   position: relative;
+
 `;
 
-const Header = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
+const CountContainer = styled.div`
+  position: absolute;
+  top: calc(${IconSizeEnum.S} + 4vmin);
+  left: 2vmin;
+`;
+
+const PromptContainer = styled.div`
+  position: absolute;
+  top: calc(${IconSizeEnum.S} + 4vmin);
+  right: 2vmin;
 `;
 
 const Content = styled(PageContent)`
@@ -43,15 +49,15 @@ function GamePage(): JSX.Element {
 				<TimeControl/>
 				<PauseControl/>
 			</NavigationContainer>
+			<CountContainer>
+				<WinCountControl/>
+				<DiamondScoreControl size={IconSizeEnum.XS}/>
+			</CountContainer>
+			<PromptContainer>
+				<PromptControl/>
+			</PromptContainer>
 			<Content>
-				<Header>
-					<div>
-						<WinCountControl/>
-						<DiamondScoreControl size={IconSizeEnum.XS}/>
-					</div>
-					<TargetEmojiControl style={{ alignSelf: 'center' }}/>
-					<PromptControl/>
-				</Header>
+				<TargetEmojiControl className="target_emoji"/>
 				<MergeEmojiControl/>
 				<SelectedEmojiPanel/>
 			</Content>
