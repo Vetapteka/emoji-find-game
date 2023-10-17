@@ -8,7 +8,7 @@ import { closeModal } from '../store/pages/pages.slice';
 import DigitProvider from '../components/digits/DigitProvider';
 import { startTimer } from '../store/timer/timer.slice';
 import { ModalBackgroundContainer } from '../components/style/ModalBackgroundContainer';
-import { startGame } from '../store/emoji-mapper/emojiMapper.slice';
+import { updateTargetEmoji } from '../store/emoji-mapper/emojiMapper.slice';
 
 function StartGameModal(): JSX.Element {
 	const [countdown, setCountdown]: [number, TStateSetter<number>] = useState(COUNTDOWN_TIME_VALUE);
@@ -20,7 +20,7 @@ function StartGameModal(): JSX.Element {
 				setCountdown(countdown - 1);
 			} else {
 				dispatch(startTimer());
-				dispatch(startGame());
+				dispatch(updateTargetEmoji());
 				dispatch(closeModal());
 				clearTimeout(timer);
 			}

@@ -16,8 +16,6 @@ function TimeControl(): JSX.Element {
 	useEffect((): void => {
 		const timeDashesCount: number = GAME_DURATION - time;
 
-		console.log(timeDashes.length);
-
 		if (timeDashes.length >= timeDashesCount) {
 			setTimeDashes([]);
 		} else if (timeDashes.length < timeDashesCount - 1) {

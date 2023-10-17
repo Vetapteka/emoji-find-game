@@ -27,18 +27,14 @@ const Wrapper = styled.div<WrapperProps>`
   height: ${({ size, height }) => height || size || '100px'};
   width: ${({ size, width }) => width || size || '100px'};
   position: relative;
-
-  &:hover > :first-child {
-    stroke-dasharray: 10 10;
-  }
-
+  
   & > .border {
     width: 100%;
     height: 100%;
 
     ${({ isHoverActive }) => isHoverActive ? `
 	
-	&:hover {
+	&:hover  > :first-child {
 	 stroke-dasharray: 10 10;
 	}
 	` : ''}
