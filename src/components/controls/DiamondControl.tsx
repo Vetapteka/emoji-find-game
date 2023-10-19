@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 interface DiamondProps {
 	size: IconSizeEnum;
 	count: number;
+	onClick?: () => void;
 }
 
 function DiamondControl({ size, count, ...props }: DiamondProps) {

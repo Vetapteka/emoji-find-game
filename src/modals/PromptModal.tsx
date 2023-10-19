@@ -8,7 +8,7 @@ import DiamondScoreControl from '../components/controls/DiamondScoreControl';
 import styled from 'styled-components';
 import ContinueGameControl from '../components/controls/ContinueGameControl';
 import BuyForDiamondsControl from '../components/controls/BuyForDiamondsControl';
-import { ToDoEnum } from '../hooks/useBuySmth';
+import { ITodo, ToDoEnum } from '../hooks/useBuySmth';
 import UpdateEmojiPromptContent from '../components/controls/UpdateEmojiPromptContent';
 import ShowAnswerPromptContent from '../components/controls/ShowAnswerPromptContent';
 
@@ -28,7 +28,7 @@ const Content = styled.div`
 `;
 
 interface PromptModalProps {
-	toDo: ToDoEnum;
+	toDo: ITodo;
 	price: number;
 }
 
@@ -41,14 +41,14 @@ function PromptModal({ toDo, price }: PromptModalProps): JSX.Element {
 					<DiamondScoreControl size={IconSizeEnum.S}/>
 				</NavigationContainer>
 				<Content>
-					{toDo === ToDoEnum.UPDATE_EMOJI
+					{toDo.action === ToDoEnum.UPDATE_EMOJI
 						? <UpdateEmojiPromptContent/>
 						: <ShowAnswerPromptContent/>
 					}
 				</Content>
 				<FooterContainer>
 					<RewardVideoControl withBorder={true} toDo={toDo}/>
-					<BuyForDiamondsControl price={price} toDo={toDo}/>
+					<BuyForDiamondsControl withBorder={true} price={price} toDo={toDo}/>
 				</FooterContainer>
 			</Wrapper>
 		</ModalContainer>
