@@ -2,7 +2,7 @@ import React, { JSX } from 'react';
 import { ModalBackgroundContainer } from './ModalBackgroundContainer';
 import styled from 'styled-components';
 
-interface WrapperProps{
+interface WrapperProps {
 	size?: ModalSizeEnum;
 }
 
@@ -11,9 +11,9 @@ const Wrapper = styled.div<WrapperProps>`
   height: ${({ size }) => `calc(${size} * 0.86)`};;
   background: no-repeat center/contain url(${({ theme }) => require(`../../assets/themes/${theme.prefix}/modal-background.svg`)});
   padding: 1.5vh;
-`
+`;
 
-export enum ModalSizeEnum{
+export enum ModalSizeEnum {
 	M = '40vh',
 	S = '30vh',
 }

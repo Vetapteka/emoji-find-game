@@ -27,7 +27,7 @@ function StartGameModal(): JSX.Element {
 			}
 		}, 1000);
 
-		return () => {
+		return (): void => {
 			clearTimeout(timer);
 		};
 	}, [countdown]);

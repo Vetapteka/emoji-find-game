@@ -34,7 +34,7 @@ const Wrapper = styled.div<WrapperProps>`
 
     ${({ isHoverActive }) => isHoverActive ? `
 	
-	&:hover  > :first-child {
+	&:hover > :first-child {
 	 stroke-dasharray: 10 10;
 	}
 	` : ''}
@@ -67,7 +67,7 @@ const Wrapper = styled.div<WrapperProps>`
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    padding: 0 2%;
+    padding: 0 2.5%;
     margin: 0;
     display: flex;
     align-items: center;
@@ -75,7 +75,7 @@ const Wrapper = styled.div<WrapperProps>`
 
     & > svg {
       width: ${TIME_DASH_WIDTH};
-      height: 100%;
+      height: 70%;
       display: inline-block;
     }
   }

@@ -5,12 +5,14 @@ import Icon, { IconSizeEnum } from '../icons/Icon';
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  z-index: 50;
 `;
 
 interface DiamondProps {
 	size: IconSizeEnum;
 	count: number;
 	onClick?: () => void;
+	className?: string;
 }
 
 function DiamondControl({ size, count, ...props }: DiamondProps) {

@@ -24,7 +24,7 @@ function ThemePage(): JSX.Element {
 	const availableThemes: ITheme[] = useAppSelector((state: RootState) => state.themeReducer.availableThemes);
 
 	return (
-		<PageContainer>
+		<PageContainer className="a-appear">
 			<NavigationContainer>
 				<BackControl/>
 				<DiamondScoreControl size={IconSizeEnum.S}/>

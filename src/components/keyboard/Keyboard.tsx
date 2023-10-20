@@ -45,7 +45,7 @@ function Keyboard(): JSX.Element {
 						<EmojiKeyboardSwitcher key={nanoid()}
 							isActive={emojiListName === listName}
 							onClick={() => setEmojiListName(listName as TEmojiListKeys)}>
-							<Icon icon={EmojiListToIcon[listName as TEmojiListKeys]} size={IconSizeEnum.S}/>
+							<Icon className="a-hover-up" icon={EmojiListToIcon[listName as TEmojiListKeys]} size={IconSizeEnum.S}/>
 						</EmojiKeyboardSwitcher>)
 					}
 				</div>

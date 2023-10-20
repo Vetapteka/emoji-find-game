@@ -10,12 +10,12 @@ import { UPDATE_EMOJI_PRICE } from '../../constants';
 function UpdateEmojiControl(props: any): JSX.Element {
 	const dispatch: AppDispatch = useAppDispatch();
 	const openUpdateEmojiModalHandler = (): void => {
-		dispatch(openModal({ type: 'PROMPT_MODAL', props: { toDo: ToDoEnum.UPDATE_EMOJI, price: UPDATE_EMOJI_PRICE } }));
+		dispatch(openModal({ type: 'PROMPT_MODAL', props: { toDo: {action: ToDoEnum.UPDATE_EMOJI}, price: UPDATE_EMOJI_PRICE } }));
 		dispatch(stopTimer());
 	};
 
 	return (
-		<Icon style={{ zIndex: '100' }} {...props} icon={'UPDATE_ICON'} size={IconSizeEnum.XS}
+		<Icon className="a-hover-up-down" style={{ zIndex: '100' }} {...props} icon={'UPDATE_ICON'} size={IconSizeEnum.XS}
 			  onClick={openUpdateEmojiModalHandler}/>
 	);
 }

@@ -18,7 +18,8 @@ function ContinueGameControl({ isBackIcon, size }: ContinueGameControlProps): JS
 		dispatch(openPage('GAME_PAGE'));
 	};
 	return (
-		<Icon icon={isBackIcon ? 'BACK_ICON' : 'PLAY_ICON'} size={size ?? IconSizeEnum.L}
+		<Icon className={isBackIcon ? 'a-hover-up' : 'a-pulse'} icon={isBackIcon ? 'BACK_ICON' : 'PLAY_ICON'}
+			  size={size ?? IconSizeEnum.L}
 			  onClick={openGamePageHandler}/>
 	);
 }

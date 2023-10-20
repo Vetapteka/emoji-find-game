@@ -13,7 +13,7 @@ function ThemesControl({ size }: ThemesControlProps): JSX.Element {
 
 	const openThemesPageHandler = () => dispatch(openPage('THEMES_PAGE'));
 	return (
-		<Icon icon="THEME_ICON" size={size || IconSizeEnum.M} onClick={openThemesPageHandler}/>
+		<Icon className="a-hover-up" icon="THEME_ICON" size={size || IconSizeEnum.M} onClick={openThemesPageHandler}/>
 	);
 }
 

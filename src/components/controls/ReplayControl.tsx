@@ -6,7 +6,7 @@ function ReplayControl(): JSX.Element {
 	const startGameHandler = useStartGame();
 
 	return (
-		<Icon icon="REPLAY_ICON" size={IconSizeEnum.S} onClick={startGameHandler}/>
+		<Icon className="a-hover-up-down" icon="REPLAY_ICON" size={IconSizeEnum.S} onClick={startGameHandler}/>
 	);
 }
 

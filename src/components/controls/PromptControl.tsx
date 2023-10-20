@@ -11,12 +11,12 @@ import { stopTimer } from '../../store/timer/timer.slice';
 function PromptControl(): JSX.Element {
 	const dispatch: AppDispatch = useAppDispatch();
 	const openPromptModalHandler = (): void => {
-		dispatch(openModal({ type: 'PROMPT_MODAL', props: { toDo: ToDoEnum.SHOW_ANSWER, price: SHOW_ANSWER_PRICE } }));
+		dispatch(openModal({ type: 'PROMPT_MODAL', props: { toDo: {action: ToDoEnum.SHOW_ANSWER}, price: SHOW_ANSWER_PRICE } }));
 		dispatch(stopTimer());
 	};
 
 	return (
-		<Icon onClick={openPromptModalHandler} icon="PROMPT_ICON" size={IconSizeEnum.S}/>
+		<Icon className="update a-hover-up-down" onClick={openPromptModalHandler} icon="PROMPT_ICON" size={IconSizeEnum.S}/>
 	);
 }
 

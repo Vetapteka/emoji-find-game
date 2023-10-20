@@ -24,20 +24,20 @@ function StartPage(): JSX.Element {
 	const startGameHandler = useStartGame();
 
 	return (
-		<Wrapper>
+		<Wrapper className="a-appear">
 			<NavigationContainer>
 				<DiamondScoreControl size={IconSizeEnum.S}/>
-				<Icon icon={'SETTINGS_ICON'} size={IconSizeEnum.S}/>
+				<Icon className="a-hover-up" icon={'SETTINGS_ICON'} size={IconSizeEnum.S}/>
 			</NavigationContainer>
 			<Content>
 				<BestScoreControl/>
-				<Icon icon={'PLAY_ICON'} size={IconSizeEnum.XL} onClick={startGameHandler}/>
+				<Icon className="a-pulse" icon={'PLAY_ICON'} size={IconSizeEnum.XL} onClick={startGameHandler}/>
 			</Content>
 			<NavigationContainer>
-				<Icon icon={'MORE_GAMES_ICON'} size={IconSizeEnum.L}/>
-				<Icon icon={'LEADERBOARD_ICON'} size={IconSizeEnum.L}/>
+				<Icon className="a-hover-up" icon={'MORE_GAMES_ICON'} size={IconSizeEnum.L}/>
+				<Icon className="a-hover-up" icon={'LEADERBOARD_ICON'} size={IconSizeEnum.L}/>
 				<ThemesControl size={IconSizeEnum.L}/>
-				<Icon icon={'LIKE_ICON'} size={IconSizeEnum.L}/>
+				<Icon className="a-hover-up" icon={'LIKE_ICON'} size={IconSizeEnum.L}/>
 			</NavigationContainer>
 		</Wrapper>
 	);

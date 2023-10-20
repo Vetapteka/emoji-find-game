@@ -43,7 +43,7 @@ const Content = styled(PageContent)`
 
 function GamePage(): JSX.Element {
 	return (
-		<Wrapper>
+		<Wrapper className="a-appear">
 			<NavigationContainer>
 				<Icon icon="TIME_ICON" size={IconSizeEnum.S}/>
 				<TimeControl/>

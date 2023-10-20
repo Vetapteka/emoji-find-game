@@ -11,7 +11,7 @@ function BackHomeControl(): JSX.Element {
 		dispatch(openPage('START_PAGE'));
 	};
 	return (
-		<Icon icon={'HOME_ICON'} size={IconSizeEnum.S} onClick={openStartPageHandler}/>
+		<Icon className="a-hover-up" icon={'HOME_ICON'} size={IconSizeEnum.S} onClick={openStartPageHandler}/>
 	);
 }
 

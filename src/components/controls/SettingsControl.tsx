@@ -3,7 +3,7 @@ import Icon, { IconSizeEnum } from '../icons/Icon';
 
 function SettingsControl(): JSX.Element {
 	return (
-		<Icon icon="SETTINGS_ICON" size={IconSizeEnum.S}/>
+		<Icon className="a-hover-up" icon="SETTINGS_ICON" size={IconSizeEnum.S}/>
 	);
 }
 

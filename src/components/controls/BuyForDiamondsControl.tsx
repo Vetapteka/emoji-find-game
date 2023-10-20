@@ -16,10 +16,13 @@ function BuyForDiamondsControl({ price, toDo, withBorder }: BuyForDiamondsContro
 	return (
 		<>
 			{withBorder
-				? <PriceContainer onClick={() => buySmth(price, toDo)}><DiamondControl
-					size={IconSizeEnum.S} count={price}/></PriceContainer>
-				: <DiamondControl  onClick={() => buySmth(price, toDo)}
-					size={IconSizeEnum.S} count={price}/>
+				? <PriceContainer onClick={() => buySmth(price, toDo)}>
+					<DiamondControl size={IconSizeEnum.S} count={price}/>
+				</PriceContainer>
+				: <DiamondControl className="a-hover-up"
+								  onClick={() => buySmth(price, toDo)}
+								  size={IconSizeEnum.S}
+								  count={price}/>
 			}
 		</>
 	);

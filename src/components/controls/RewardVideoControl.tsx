@@ -7,6 +7,7 @@ import useBuySmth, { ITodo } from '../../hooks/useBuySmth';
 interface RewardVideoControlProps {
 	toDo: ITodo;
 	withBorder?: boolean;
+	className?: string;
 }
 
 function RewardVideoControl({ withBorder, toDo }: RewardVideoControlProps): JSX.Element {
@@ -22,7 +23,7 @@ function RewardVideoControl({ withBorder, toDo }: RewardVideoControlProps): JSX.
 					? <PriceContainer onClick={watchVideoHandler}>
 						<Icon icon="REWARD_ICON" size={IconSizeEnum.M}/>
 					</PriceContainer>
-					: <Icon onClick={watchVideoHandler} icon="REWARD_ICON" size={IconSizeEnum.M}/>
+					: <Icon className="a-hover-up" onClick={watchVideoHandler} icon="REWARD_ICON" size={IconSizeEnum.M}/>
 			}
 		</>
 

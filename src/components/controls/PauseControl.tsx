@@ -12,7 +12,7 @@ function PauseControl(): JSX.Element {
 		dispatch(openModal({type: 'PAUSE_MODAL'}));
 	};
 	return (
-		<Icon icon="PAUSE_ICON" size={IconSizeEnum.S} onClick={openPauseModalHandler}/>
+		<Icon className="a-hover-up" icon="PAUSE_ICON" size={IconSizeEnum.S} onClick={openPauseModalHandler}/>
 	);
 }
 
