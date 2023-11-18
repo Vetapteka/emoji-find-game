@@ -1,36 +1,19 @@
-import React, { JSX, Suspense } from 'react';
-import { useAppSelector } from './hooks/redux';
-import { IPagesState } from './store/pages/pages.model';
-import { RootState } from './store/store';
-import Spinner from './components/Spinner';
-import GameOverModal from './modals/GameOverModal';
-import { ThemeProvider } from 'styled-components';
-import { IThemeState } from './store/theme/theme.model';
-import GlobalStyles from './global'
+import React, { JSX } from 'react';
+import { AppStore, setupStore } from './store/store';
+import { Provider } from 'react-redux';
+import ViewProvider from './ViewProvider';
+// import { getSounds, SoundsContext } from './hooks/soundManager/SoundContext';
 
-const StartPage = React.lazy(() => import('./pages/StartPage'));
-const ThemePage = React.lazy(() => import('./pages/ThemePage'));
-const GamePage = React.lazy(() => import('./pages/GamePage'));
-const PauseModal = React.lazy(() => import('./modals/PauseModal'));
-const CountdownModal = React.lazy(() => import('./modals/StartGameModal'));
-const PromptModal = React.lazy(() => import('./modals/PromptModal'));
+export const store: AppStore = setupStore();
 
 function App(): JSX.Element {
-	const { openedPage, openedModal, modalProps }: IPagesState = useAppSelector((state: RootState) => state.pagesReducer);
-	const { currentTheme }: IThemeState = useAppSelector((state: RootState) => state.themeReducer);
 
 	return (
-		<ThemeProvider theme={currentTheme}>
-			<GlobalStyles />
-			{openedPage === 'START_PAGE' && <Suspense fallback={<Spinner/>}><StartPage/></Suspense>}
-			{openedPage === 'THEMES_PAGE' && <Suspense fallback={<Spinner/>}><ThemePage/></Suspense>}
-			{openedPage === 'GAME_PAGE' && <Suspense fallback={<Spinner/>}><GamePage/></Suspense>}
-			{openedModal === 'PAUSE_MODAL' && <Suspense fallback={<Spinner/>}><PauseModal/></Suspense>}
-			{openedModal === 'COUNTDOWN_MODAL' && <Suspense fallback={<Spinner/>}><CountdownModal/></Suspense>}
-			{openedModal === "GAMEOVER_MODAL" && <Suspense fallback={<Spinner/>}><GameOverModal/></Suspense>}
-			{openedModal === "PROMPT_MODAL" && <Suspense fallback={<Spinner/>}><PromptModal {...modalProps}/></Suspense>}
-		</ThemeProvider>
-	);
+		// <SoundsContext.Provider value={getSounds()}>
+			<Provider store={store}>
+				<ViewProvider/>
+			</Provider>
+		// </SoundsContext.Provider>);
 }
 
 export default App;

@@ -1,6 +1,6 @@
 import { createSlice, } from '@reduxjs/toolkit';
 import { GAME_DURATION } from '../../constants';
-import { store } from '../../index';
+import { store } from '../../App';
 import { openModal } from '../pages/pages.slice';
 
 export interface ITimerState {
@@ -46,7 +46,7 @@ export const timerSlice = createSlice({
 			decrementTime: (state): void => {
 				state.time -= 1;
 				TIME -= 1;
-				console.log(state.time);
+				// console.log(state.time);
 			},
 			stopTimer: (state): void => {
 				state.isTimePause = true;

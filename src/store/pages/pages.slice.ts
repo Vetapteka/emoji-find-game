@@ -3,7 +3,7 @@ import { IPagesState, TPages, IOpenedModal } from './pages.model';
 
 const initialState: IPagesState = {
 	openedPage: 'START_PAGE',
-	previousPage: 'UNKNOWN',
+	previousPage: 'START_PAGE',
 	openedModal: 'UNKNOWN',
 	previousModal: 'UNKNOWN',
 	modalProps: null
@@ -19,16 +19,22 @@ export const pagesSlice = createSlice({
 			state.openedPage = action.payload;
 			state.previousModal = state.openedModal;
 			state.openedModal = 'UNKNOWN';
+
+			console.log(state.previousModal, state.previousPage);
 		},
 		openPreviousPage: (state): void => {
 			state.openedPage = state.previousPage;
-			state.openedModal = state.previousModal;
-			console.log(state.previousPage, state.openedModal, state.openedPage)
+			state.openedModal = state.previousPage === 'START_PAGE' ? 'UNKNOWN' : state.previousModal;
+				console.log('open previous', state.previousPage || state.previousModal);
 		},
 		openModal: (state, action: PayloadAction<IOpenedModal>): void => {
 			console.log('open modal ', action.payload);
+			state.previousPage = state.openedPage;
+			state.previousModal = state.openedModal;
 			state.openedModal = action.payload.type;
-			state.modalProps = action.payload.props;
+			state.modalProps = action.payload?.props;
+
+			console.log(state.previousModal, state.previousPage);
 		},
 		closeModal: (state): void => {
 			console.log('close modal ');

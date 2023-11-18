@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { JSX } from 'react';
 import ModalContainer from '../components/style/ModalContainer';
 import { NavigationContainer } from '../components/style/NavigationContainer';
 import BackHomeControl from '../components/controls/BackHomeControl';
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-function GameOverModal() {
+function GameOverModal(): JSX.Element {
 	return (
 		<ModalContainer>
 			<Wrapper>
