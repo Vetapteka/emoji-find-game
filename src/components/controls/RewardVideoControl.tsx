@@ -2,6 +2,7 @@ import React from 'react';
 import Icon, { IconSizeEnum } from '../icons/Icon';
 import PriceContainer from '../style/PriceContainer';
 import useBuySmth, { ITodo } from '../../hooks/useBuySmth';
+import useSoundManager, { SoundManager } from '../../hooks/soundManager/useSoundManager';
 
 
 interface RewardVideoControlProps {
@@ -12,7 +13,9 @@ interface RewardVideoControlProps {
 
 function RewardVideoControl({ withBorder, toDo }: RewardVideoControlProps): JSX.Element {
 	const { toDoSmth } = useBuySmth();
+	const { playSound }: SoundManager = useSoundManager();
 	const watchVideoHandler = (): void => {
+		playSound('ui_click_sound');
 		toDoSmth(toDo);
 	};
 

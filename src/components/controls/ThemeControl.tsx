@@ -10,6 +10,7 @@ import { setTheme } from '../../store/theme/theme.slice';
 import BuyForDiamondsControl from './BuyForDiamondsControl';
 import { ITodo, ToDoEnum } from '../../hooks/useBuySmth';
 import RewardVideoControl from './RewardVideoControl';
+import useSoundManager, { SoundManager } from '../../hooks/soundManager/useSoundManager';
 
 
 const ThemeContainer = styled(NavigationContainer)`
@@ -25,6 +26,7 @@ interface ThemeControlProps {
 function ThemeControl({ theme }: ThemeControlProps): JSX.Element {
 	const { currentTheme }: IThemeState = useAppSelector((state: RootState) => state.themeReducer);
 	const dispatch: AppDispatch = useAppDispatch();
+	const { playSound }: SoundManager = useSoundManager();
 
 	const getPriceElement = (): JSX.Element => {
 		const toDo: ITodo = { action: ToDoEnum.BUY_THEME, payload: theme.index };
@@ -38,9 +40,14 @@ function ThemeControl({ theme }: ThemeControlProps): JSX.Element {
 		}
 	};
 
+	const choseThemeHandler = (): void => {
+		playSound('ui_click_sound');
+		dispatch(setTheme(theme.index));
+	};
+
 	return (
 		<PenBorder width="100%" height={IconSizeEnum.L} isActive={theme.index === currentTheme.index}
-				   onClick={() => dispatch(setTheme(theme.index))}>
+				   onClick={choseThemeHandler}>
 			<ThemeContainer>
 				<Icon icon="THEME_ICON" size={IconSizeEnum.L} style={{ stroke: theme.stroke }}/>
 				{getPriceElement()}

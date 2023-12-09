@@ -6,16 +6,24 @@ import { openModal } from '../../store/pages/pages.slice';
 import { stopTimer } from '../../store/timer/timer.slice';
 import { ToDoEnum } from '../../hooks/useBuySmth';
 import { UPDATE_EMOJI_PRICE } from '../../constants';
+import useSoundManager, { SoundManager } from '../../hooks/soundManager/useSoundManager';
 
 function UpdateEmojiControl(props: any): JSX.Element {
 	const dispatch: AppDispatch = useAppDispatch();
+	const { playSound }: SoundManager = useSoundManager();
+
 	const openUpdateEmojiModalHandler = (): void => {
-		dispatch(openModal({ type: 'PROMPT_MODAL', props: { toDo: {action: ToDoEnum.UPDATE_EMOJI}, price: UPDATE_EMOJI_PRICE } }));
+		playSound('ui_click_sound');
+		dispatch(openModal({
+			type: 'PROMPT_MODAL',
+			props: { toDo: { action: ToDoEnum.UPDATE_EMOJI }, price: UPDATE_EMOJI_PRICE }
+		}));
 		dispatch(stopTimer());
 	};
 
 	return (
-		<Icon className="a-hover-up-down" style={{ zIndex: '100' }} {...props} icon={'UPDATE_ICON'} size={IconSizeEnum.XS}
+		<Icon className="a-hover-up-down" style={{ zIndex: '100' }} {...props} icon={'UPDATE_ICON'}
+			  size={IconSizeEnum.XS}
 			  onClick={openUpdateEmojiModalHandler}/>
 	);
 }

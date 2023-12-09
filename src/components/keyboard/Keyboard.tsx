@@ -11,6 +11,7 @@ import { TStateSetter } from '../../types';
 import { useAppDispatch } from '../../hooks/redux';
 import { AppDispatch } from '../../store/store';
 import { nanoid } from 'nanoid';
+import useSoundManager from '../../hooks/soundManager/useSoundManager';
 
 const Keys = styled.div`
   & > * {
@@ -34,8 +35,16 @@ const EmojiListToIcon: TEmojiListToIcon = {
 };
 
 function Keyboard(): JSX.Element {
+	const { playSound } = useSoundManager();
 	const [emojiListName, setEmojiListName]: [TEmojiListKeys, TStateSetter<TEmojiListKeys>] = useState<TEmojiListKeys>('yellowList');
 	const dispatch: AppDispatch = useAppDispatch();
+
+	const onKeyClick = (code: string) => {
+		return (): void => {
+			playSound('smile_choose_sound');
+			dispatch(setSelectedEmoji(code));
+		};
+	};
 
 	return (
 		<KeyboardBorder height={KEYBOARD_HEIGHT}>
@@ -43,15 +52,16 @@ function Keyboard(): JSX.Element {
 				<div className="switchers">
 					{Object.keys(emojiCodes).map((listName: string) =>
 						<EmojiKeyboardSwitcher key={nanoid()}
-							isActive={emojiListName === listName}
-							onClick={() => setEmojiListName(listName as TEmojiListKeys)}>
-							<Icon className="a-hover-up" icon={EmojiListToIcon[listName as TEmojiListKeys]} size={IconSizeEnum.S}/>
+											   isActive={emojiListName === listName}
+											   onClick={() => setEmojiListName(listName as TEmojiListKeys)}>
+							<Icon className="a-hover-up" icon={EmojiListToIcon[listName as TEmojiListKeys]}
+								  size={IconSizeEnum.S}/>
 						</EmojiKeyboardSwitcher>)
 					}
 				</div>
 				<Keys className="keys">
 					{emojiCodes[emojiListName].map((code: string) =>
-						<div className={`u-${code}`} key={nanoid()} onClick={() => dispatch(setSelectedEmoji(code))}></div>
+						<div className={`u-${code}`} key={nanoid()} onClick={onKeyClick(code)}></div>
 					)}
 				</Keys>
 			</>

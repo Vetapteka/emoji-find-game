@@ -7,6 +7,8 @@ import { NavigationContainer } from '../components/style/NavigationContainer';
 import BestScoreControl from '../components/controls/BestScoreControl';
 import ThemesControl from '../components/controls/ThemesControl';
 import useStartGame from '../hooks/useStartGame';
+import SettingsControl from '../components/controls/SettingsControl';
+import useSoundManager, { SoundManager } from '../hooks/soundManager/useSoundManager';
 
 const Wrapper = styled(PageContainer)`
   display: flex;
@@ -21,13 +23,20 @@ const Content = styled(PageContent)`
 `;
 
 function StartPage(): JSX.Element {
-	const startGameHandler = useStartGame();
+	const startGame = useStartGame();
+	const { playSound }: SoundManager = useSoundManager();
+
+
+	const startGameHandler = (): void => {
+		playSound('background_music');
+		startGame();
+	}
 
 	return (
 		<Wrapper className="a-appear">
 			<NavigationContainer>
 				<DiamondScoreControl size={IconSizeEnum.S}/>
-				<Icon className="a-hover-up" icon={'SETTINGS_ICON'} size={IconSizeEnum.S}/>
+				<SettingsControl/>
 			</NavigationContainer>
 			<Content>
 				<BestScoreControl/>

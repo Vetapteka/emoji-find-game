@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { Howl } from 'howler';
 import { SoundsContext, TAvailableSound, TSounds } from './SoundContext';
 
-interface SoundManager {
+export interface SoundManager {
 	playSound: (soundId: TAvailableSound) => void;
 	decreaseVolume: (volume: number) => void;
 	stopSound: (soundId: TAvailableSound) => void;
@@ -13,8 +13,9 @@ const useSoundManager = (): SoundManager => {
 	const sounds: TSounds = useContext(SoundsContext);
 
 	const playSound = (soundId: TAvailableSound): void => {
-		if (sounds[soundId]) {
-			sounds[soundId].play();
+		const sound: Howl = sounds[soundId];
+		if (sound && !sound.playing()) {
+			sound.play();
 		}
 	};
 
@@ -36,13 +37,7 @@ const useSoundManager = (): SoundManager => {
 		});
 	};
 
-	useEffect(() => {
-		return (): void => {
-			stopAllSounds();
-		};
-	}, []);
-
-	return {decreaseVolume, playSound, stopSound, stopAllSounds };
+	return { decreaseVolume, playSound, stopSound, stopAllSounds };
 };
 
 export default useSoundManager;

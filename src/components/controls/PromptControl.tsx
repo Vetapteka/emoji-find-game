@@ -6,17 +6,25 @@ import { openModal } from '../../store/pages/pages.slice';
 import { ToDoEnum } from '../../hooks/useBuySmth';
 import { SHOW_ANSWER_PRICE } from '../../constants';
 import { stopTimer } from '../../store/timer/timer.slice';
+import useSoundManager, { SoundManager } from '../../hooks/soundManager/useSoundManager';
 
 
 function PromptControl(): JSX.Element {
 	const dispatch: AppDispatch = useAppDispatch();
+	const { playSound }: SoundManager = useSoundManager();
+
 	const openPromptModalHandler = (): void => {
-		dispatch(openModal({ type: 'PROMPT_MODAL', props: { toDo: {action: ToDoEnum.SHOW_ANSWER}, price: SHOW_ANSWER_PRICE } }));
+		playSound('ui_click_sound');
+		dispatch(openModal({
+			type: 'PROMPT_MODAL',
+			props: { toDo: { action: ToDoEnum.SHOW_ANSWER }, price: SHOW_ANSWER_PRICE }
+		}));
 		dispatch(stopTimer());
 	};
 
 	return (
-		<Icon className="update a-hover-up-down" onClick={openPromptModalHandler} icon="PROMPT_ICON" size={IconSizeEnum.S}/>
+		<Icon className="update a-hover-up-down" onClick={openPromptModalHandler} icon="PROMPT_ICON"
+			  size={IconSizeEnum.S}/>
 	);
 }
 

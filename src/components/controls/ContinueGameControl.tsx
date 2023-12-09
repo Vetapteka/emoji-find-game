@@ -4,6 +4,7 @@ import { AppDispatch } from '../../store/store';
 import { useAppDispatch } from '../../hooks/redux';
 import { openPage } from '../../store/pages/pages.slice';
 import { startTimer } from '../../store/timer/timer.slice';
+import useSoundManager, { SoundManager } from '../../hooks/soundManager/useSoundManager';
 
 
 interface ContinueGameControlProps {
@@ -13,7 +14,9 @@ interface ContinueGameControlProps {
 
 function ContinueGameControl({ isBackIcon, size }: ContinueGameControlProps): JSX.Element {
 	const dispatch: AppDispatch = useAppDispatch();
+	const { playSound }: SoundManager = useSoundManager();
 	const openGamePageHandler = (): void => {
+		playSound('ui_click_sound');
 		dispatch(startTimer());
 		dispatch(openPage('GAME_PAGE'));
 	};

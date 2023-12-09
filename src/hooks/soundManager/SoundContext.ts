@@ -10,20 +10,19 @@ import timerEndSound from '../../assets/sounds/timer_end_sound.mp3';
 // @ts-ignore
 import endGameSound from '../../assets/sounds/end_game_sound.mp3';
 // @ts-ignore
-import clickUiSound from '../../assets/sounds/click_ui_sound.mp3';
+import buySound from '../../assets/sounds/buy_sound.mp3';
 // @ts-ignore
 import backgroundMusic from '../../assets/sounds/background_music.mp3';
+// @ts-ignore
+import uiClickSound from '../../assets/sounds/ui_click_sound.mp3';
 
-export interface ISound {
-	id: string,
-	url: string
-}
 
 export type TAvailableSound =
 	'smile_choose_sound'
 	| 'timer_ending_sound'
 	| 'end_game_sound'
-	| 'click_ui_sound'
+	| 'buy_sound'
+	| 'ui_click_sound'
 	| 'background_music'
 	| 'timer_end_sound';
 
@@ -34,8 +33,9 @@ const soundUrls: Record<TAvailableSound, string> = {
 	timer_ending_sound: timerEndingSound,
 	timer_end_sound: timerEndSound,
 	end_game_sound: endGameSound,
-	click_ui_sound: clickUiSound,
+	buy_sound: buySound,
 	background_music: backgroundMusic,
+	ui_click_sound: uiClickSound,
 };
 
 export const getSounds = (): TSounds => {
@@ -44,6 +44,8 @@ export const getSounds = (): TSounds => {
 	Object.entries(soundUrls).forEach(([key, url]): void => {
 		loadedSounds[key as TAvailableSound] = new Howl({
 			src: [url],
+			loop: key === 'background_music',
+			volume: 0.5
 		});
 	});
 
