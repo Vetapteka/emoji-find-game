@@ -26,6 +26,8 @@ import RewardIcon from './RewardIcon';
 import PromptIcon from './PromptIcon';
 import ArrowIcon from './ArrowIcon';
 import EqualIcon from './EqualIcon';
+import MusicIcon from './MusicIcon';
+import SoundsIcon from './SoundsIcon';
 
 export enum IconSizeEnum {
 	XXL = '30vh',
@@ -51,6 +53,7 @@ export type TIcon =
 	| 'LEADERBOARD_ICON'
 	| 'LIKE_ICON'
 	| 'MORE_GAMES_ICON'
+	| 'MUSIC_ICON'
 	| 'PAUSE_ICON'
 	| 'PLUS_ICON'
 	| 'PLAY_ICON'
@@ -60,6 +63,7 @@ export type TIcon =
 	| 'REWARD_ICON'
 	| 'SETTINGS_ICON'
 	| 'SMILE_ICON'
+	| 'SOUNDS_ICON'
 	| 'THEME_ICON'
 	| 'TIME_ICON'
 	| 'UPDATE_ICON'
@@ -97,6 +101,7 @@ function Icon({ size, icon, onClick, ...props }: IconProps) {
 			{icon === 'LEADERBOARD_ICON' && <LeaderBoardIcon/>}
 			{icon === 'LIKE_ICON' && <LikeIcon/>}
 			{icon === 'MORE_GAMES_ICON' && <MoreGamesIcon/>}
+			{icon === 'MUSIC_ICON' && <MusicIcon/>}
 			{icon === 'PAUSE_ICON' && <PauseIcon/>}
 			{icon === 'PLAY_ICON' && <PlayIcon/>}
 			{icon === 'PLUS_ICON' && <PlusIcon/>}
@@ -106,6 +111,7 @@ function Icon({ size, icon, onClick, ...props }: IconProps) {
 			{icon === 'REWARD_ICON' && <RewardIcon/>}
 			{icon === 'SETTINGS_ICON' && <SettingsIcon/>}
 			{icon === 'SMILE_ICON' && <SmileIcon/>}
+			{icon === 'SOUNDS_ICON' && <SoundsIcon/>}
 			{icon === 'THEME_ICON' && <ThemeIcon/>}
 			{icon === 'TIME_ICON' && <TimeIcon/>}
 			{icon === 'UPDATE_ICON' && <UpdateIcon/>}
