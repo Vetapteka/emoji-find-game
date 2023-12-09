@@ -8,7 +8,7 @@ import { SelectedEmojiContainersEnum } from '../../store/emoji-mapper/emojiMappe
 import styled from 'styled-components';
 
 interface WrapperProps {
-	isLeft: boolean;
+	$isLeft: boolean;
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -20,7 +20,7 @@ const Wrapper = styled.div<WrapperProps>`
     height: ${KEY_EMOJI_SIZE};
     top: -3vh;
 
-    ${({ isLeft }) => isLeft ? 'right: -3vh;' : 'left: -3vh;'}
+    ${({ $isLeft }) => $isLeft ? 'right: -3vh;' : 'left: -3vh;'}
 
     z-index: 50;
     opacity: 0.8;
@@ -42,7 +42,7 @@ function SelectedEmojiControl({ type, prompt, selectedEmoji }: SelectedEmojiCont
 	};
 
 	return (
-		<Wrapper isLeft={type === SelectedEmojiContainersEnum.LEFT}>
+		<Wrapper $isLeft={type === SelectedEmojiContainersEnum.LEFT}>
 			<div className={`u-${prompt} prompt`}></div>
 			<PenBorder size={SELECTED_EMOJI_CONTAINER_SIZE} onClick={clickHandler}
 					   isActive={type === activeEmojiContainer}>

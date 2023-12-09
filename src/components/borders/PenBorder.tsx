@@ -19,8 +19,8 @@ interface WrapperProps {
 	size?: string;
 	width?: string;
 	height?: string;
-	isCenter?: boolean;
-	isHoverActive?: boolean;
+	$isCenter?: boolean;
+	$isHoverActive?: boolean;
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -32,7 +32,7 @@ const Wrapper = styled.div<WrapperProps>`
     width: 100%;
     height: 100%;
 
-    ${({ isHoverActive }) => isHoverActive ? `
+    ${({ $isHoverActive }) => $isHoverActive ? `
 	
 	&:hover > :first-child {
 	 stroke-dasharray: 10 10;
@@ -53,7 +53,7 @@ const Wrapper = styled.div<WrapperProps>`
     margin: 10%;
   }
 
-  ${({ isCenter }) => isCenter ? `
+  ${({ $isCenter }) => $isCenter ? `
    & > * {
     position: absolute;
     top: 50%;
@@ -82,9 +82,9 @@ const Wrapper = styled.div<WrapperProps>`
 `;
 
 
-function PenBorder({ isActive, children, ...props }: PenBorderProps) {
+function PenBorder({ isActive, children, isHoverActive, isCenter, ...props }: PenBorderProps) {
 	return (
-		<Wrapper {...props}>
+		<Wrapper $isHoverActive={isHoverActive} $isCenter={isCenter} {...props}>
 			<svg className="border" preserveAspectRatio="none" viewBox="0 0 411 392" fill="none"
 				 xmlns="http://www.w3.org/2000/svg"
 				 strokeDasharray={isActive ? '10 10' : 'none'}>
