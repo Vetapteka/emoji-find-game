@@ -11,7 +11,7 @@ const initialState: IThemeState = {
 		{ stroke: '#FFC907', prefix: 'yellow', price: 300, index: 4 },
 		{ stroke: '#A5BE15', prefix: 'green', price: 23, index: 5 },
 		{ stroke: '#866666', prefix: 'brown', price: 'reward', index: 6 },
-		{ stroke: '#52575E', prefix: 'dark', price: 'reward', index: 7 },
+		{ stroke: '#52575E', prefix: 'dark', price: 'reward', index: 7, background_color: "#A4A4A4" },
 		{ stroke: '#EE3B14', prefix: 'red', price: 34, index: 8 },
 		{ stroke: '#A463C3', prefix: 'violet', price: 0, index: 9 }
 	],

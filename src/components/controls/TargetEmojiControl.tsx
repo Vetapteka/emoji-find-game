@@ -11,7 +11,19 @@ const Wrapper = styled.div`
   & > .update {
     position: absolute;
     top: -0.7vh;
-    right: -1.5vh;
+    right: -1.7vh;
+	
+	&::before{
+      content: '';
+      position: absolute;
+      top: -0.17vh;
+	  z-index: -5;
+	  right: 0;
+      width: 100%;
+      height: 100%; 
+      border-radius: 50%; 
+      background-color: ${({ theme }) => theme.background_color ?? 'white'}; 
+	}
   }
 `;
 
