@@ -34,8 +34,8 @@ export enum IconSizeEnum {
 	XL = '23vh',
 	L = '15vh',
 	M = '10vh',
-	S = '6vh',
-	XS = '4vh',
+	S = '7.3vh',
+	XS = '5vh',
 }
 
 export type TIcon =
